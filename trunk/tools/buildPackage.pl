@@ -79,9 +79,9 @@ $now =~ s/[\r\n]//g;
 print FP "    <key>date</key>\n";
 print FP "    <string>" . $now . "</string>\n";
 
-$hash = `md5sum build/$archive`;
+$hash = `md5 build/$archive`;
 $hash =~ s/[\r\n]//g;
-$hash =~ s/\s.*$//;
+$hash =~ s/^.*=\s+//;
 print FP "    <key>hash</key>\n";
 print FP "    <string>" . $hash . "</string>\n";
 
