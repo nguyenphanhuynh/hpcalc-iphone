@@ -1,0 +1,19 @@
+#summary How to install HP-15C on your iPhone
+#labels Featured
+
+== Prerequisite ==
+
+Until Apple releases a software development kit to enable 3rd parties to "officially" write apps for the iPhone, you'll need to jailbreak your iPhone.  See [http://iphone.fiveforty.net/wiki/index.php/Main_Page here] for instructions.
+
+
+== Installation ==
+
+The easiest method of installing is with Installer.app:
+  # Launch Installer.app on your phone.
+  # Tap the Sources tab at the bottom.
+  # Tap the Edit button at the top.
+  # Tap the Add button at the top.
+  # Enter the following url: {{{http://tinyurl.com/2b32sn}}}
+  # Click OK.
+  # Go to the Install tab and scroll down to Utilities.
+  # In the Utilities section, you should see HP-15C. Select it and tap Install.
