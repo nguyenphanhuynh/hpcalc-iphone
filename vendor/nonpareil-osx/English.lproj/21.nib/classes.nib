@@ -1,0 +1,15 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = LEDDisplayView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {CLASS = TransparentWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
+        {
+            ACTIONS = {buttonPressed = id; modeSwitch = id; }; 
+            CLASS = WoodstockController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {display = LEDDisplayView; }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

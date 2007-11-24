@@ -1,0 +1,15 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {buttonPressed = id; modeSwitch = id; }; 
+            CLASS = ClassicController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {display = LEDDisplayView; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = LEDDisplayView; LANGUAGE = ObjC; SUPERCLASS = NSView; }, 
+        {CLASS = TransparentWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }
+    ); 
+    IBVersion = 1; 
+}
