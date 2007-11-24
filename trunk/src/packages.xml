@@ -5,14 +5,14 @@
 	<dict>
 		<key>name</key>
 		<string>HP Calculators for iPhone</string>
-			<key>maintainer</key>
-			<string>Thomas Fors</string>
-			<key>contact</key>
-			<string>tom@fors.net</string>
-			<key>url</key>
-			<string>http://hpcalc-iphone.googlecode.com/</string>
-			<key>category</key>
-			<string>Community Sources</string>
-		</dict>
-		<key>packages</key>
-		<array>
+		<key>maintainer</key>
+		<string>Thomas Fors</string>
+		<key>contact</key>
+		<string>tom@fors.net</string>
+		<key>url</key>
+		<string>http://hpcalc-iphone.googlecode.com/</string>
+		<key>category</key>
+		<string>Community Sources</string>
+	</dict>
+	<key>packages</key>
+	<array>
