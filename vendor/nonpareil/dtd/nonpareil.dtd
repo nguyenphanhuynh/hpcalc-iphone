@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!ELEMENT state (ui*, chip*, memory*)>
+<!ATTLIST state 
+          version  CDATA #REQUIRED
+          arch     CDATA #REQUIRED
+          platform CDATA #REQUIRED
+          model    CDATA #REQUIRED>
+
+<!ELEMENT ui (switch*)>
+
+<!ELEMENT switch EMPTY>
+          number CDATA #REQUIRED
+          position CDATA #REQUIRED>
+
+<!ELEMENT chip (reg*)>
+<!ATTLIST chip
+          name CDATA #REQUIRED
+          addr CDATA #REQUIRED>
+
+<!ELEMENT reg EMPTY>
+<!ATTLIST reg
+          name CDATA #REQUIRED
+          data CDATA #REQUIRED
+          index CDATA #IMPLIED>
+
+<!ELEMENT memory (loc*)>
+<!ATTLIST memory as CDATA #REQUIRED>
+
+<!ELEMENT loc EMPTY>
+<!ATTLIST loc
+          addr CDATA #REQUIRED
+          data CDATA #REQUIRED>
