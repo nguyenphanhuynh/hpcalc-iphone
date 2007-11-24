@@ -257,7 +257,11 @@ void voyager_display_event_fn (nut_reg_t *nut_reg, int event)
 				voyager_display_update (nut_reg, display);
 				////sim_send_display_update_to_gui (nut_reg);
 				//nut_reg->need_redraw = true;
-				display_callback(nut_reg);
+				
+				// patch by T.Fors to prevent flicker on iPhone
+				if (display->blink) {
+					display_callback(nut_reg);
+				}
 				////print_display(nut_reg);
 				display->count = 15;
 			}
