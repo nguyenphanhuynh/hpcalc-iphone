@@ -1,0 +1,38 @@
+<key>scripts</key>
+<dict>
+	<key>install</key>
+	<array>
+		<array>
+			<string>CopyPath</string>
+			<string>$((NAME)).app</string>
+			<string>/Applications/$((NAME)).app</string>
+		</array>
+		<array>
+			<string>Exec</string>
+			<string>/Applications/$((NAME)).app/$((EXE)) --init</string>
+		</array>
+	</array>
+	<key>update</key>
+	<array>
+		<array>
+			<string>RemovePath</string>
+			<string>/Applications/$((NAME)).app</string>
+		</array>
+		<array>
+			<string>CopyPath</string>
+			<string>$((NAME)).app</string>
+			<string>/Applications/$((NAME)).app</string>
+		</array>
+		<array>
+			<string>Exec</string>
+			<string>/Applications/$((NAME)).app/$((EXE)) --init</string>
+		</array>
+	</array>
+	<key>uninstall</key>
+	<array>
+		<array>
+			<string>RemovePath</string>
+			<string>/Applications/$((NAME)).app</string>
+		</array>
+	</array>
+</dict>        

@@ -1,0 +1,18 @@
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>info</key>
+	<dict>
+		<key>name</key>
+		<string>HP Calculators for iPhone</string>
+			<key>maintainer</key>
+			<string>Thomas Fors</string>
+			<key>contact</key>
+			<string>tom@fors.net</string>
+			<key>url</key>
+			<string>http://hpcalc-iphone.googlecode.com/</string>
+			<key>category</key>
+			<string>Community Sources</string>
+		</dict>
+		<key>packages</key>
+		<array>
