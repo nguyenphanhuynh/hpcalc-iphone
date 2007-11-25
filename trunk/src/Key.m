@@ -22,16 +22,15 @@
 
 @implementation Key
 
-- (id) initWithFrame: (CGRect) frame label: (NSString *) lbl parent: (KeypadView *) p {
+- (id) initWithFrame: (CGRect) frame code: (int) code parent: (KeypadView *) p {
 	self = [super initWithFrame: frame];
-	_label = lbl;
+	_code = code;
 	_keypad = p;
 	return self;
 }   
 
 - (void) keyPressed {
-	// NSLog(@"Key: %@ pressed", _label);
-	[_keypad keyPressed:_label];
+	[_keypad keyPressed:_code];
 }
 
 @end

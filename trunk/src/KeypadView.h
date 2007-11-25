@@ -23,6 +23,6 @@
 }
 
 - (id) initWithFrame: (CGRect)frame parent: (CalculatorView *) p;
-- (void) keyPressed: (NSString *) key;
+- (void) keyPressed: (int) code;
 
 @end

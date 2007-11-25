@@ -41,9 +41,8 @@
 	return self;
 }
 
-- (void) keyPressed: (NSString *) key {
-	// NSLog(@"CalculatorView: %@ pressed", key);
-	[calc processKeypress:key];
+- (void) keyPressed: (int) code {
+	[calc processKeypress:code];
 }
 
 @end

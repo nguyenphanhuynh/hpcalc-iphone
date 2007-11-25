@@ -28,6 +28,6 @@
 }
 
 - (id) initWithFrame: (CGRect) frame;
-- (void) keyPressed: (NSString *) key;
+- (void) keyPressed: (int) code;
 
 @end
