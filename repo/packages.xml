@@ -22,19 +22,19 @@
     <key>name</key>
     <string>HP-15C</string>
     <key>version</key>
-    <string>1.0</string>
+    <string>1.0.1</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.1.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>199470</string>
+    <string>198559</string>
     <key>date</key>
-    <string>1195881391</string>
+    <string>1196031412</string>
     <key>hash</key>
-    <string>db789dea89e260eb68d3f3ffe0ab1f1c</string>
+    <string>bcd16d8a86387cc210c535fa4bd9f84c</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/</string>
     <key>description</key>
@@ -74,6 +74,70 @@
     		<array>
     			<string>RemovePath</string>
     			<string>/Applications/HP-15C.app</string>
+    		</array>
+    	</array>
+    </dict>        
+    <key>category</key>
+    <string>Utilities</string>
+</dict>
+<dict>
+    <key>bundleIdentifier</key>
+    <string>net.fors.iphone.hp12c</string>
+    <key>name</key>
+    <string>HP-12C</string>
+    <key>version</key>
+    <string>1.0</string>
+    <key>location</key>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp12c-1.0.zip</string>
+    <key>maintainer</key>
+    <string>Thomas Fors</string>
+    <key>contact</key>
+    <string>tom@fors.net</string>
+    <key>size</key>
+    <string>165904</string>
+    <key>date</key>
+    <string>1196031416</string>
+    <key>hash</key>
+    <string>d2c682ccb91b06151f915041101996ff</string>
+    <key>url</key>
+    <string>http://hpcalc-iphone.googlecode.com/</string>
+    <key>description</key>
+    <string>HP-12C calculator emulator. </string>
+    <key>scripts</key>
+    <dict>
+    	<key>install</key>
+    	<array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-12C.app</string>
+    			<string>/Applications/HP-12C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-12C.app/hp12c --init</string>
+    		</array>
+    	</array>
+    	<key>update</key>
+    	<array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-12C.app</string>
+    		</array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-12C.app</string>
+    			<string>/Applications/HP-12C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-12C.app/hp12c --init</string>
+    		</array>
+    	</array>
+    	<key>uninstall</key>
+    	<array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-12C.app</string>
     		</array>
     	</array>
     </dict>        
