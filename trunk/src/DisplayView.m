@@ -223,6 +223,22 @@
 	}
 }
 
+- (void) showBegin: (BOOL) visible {
+	if (visible) {
+		[begin setImage:digit[28]];
+	} else {
+		[begin setImage:nil];
+	}
+}
+
+- (void) showDMY: (BOOL) visible {
+	if (visible) {
+		[dmy setImage:digit[29]];
+	} else {
+		[dmy setImage:nil];
+	}
+}
+
 - (void) showPrgm: (BOOL) visible {
 	if (visible) {
 		[prgm setImage:digit[26]];
@@ -351,6 +367,9 @@ void display_callback(struct nut_reg_t *nv) {
 			case 4:
 				[(DisplayView *)nv->display showFlagG:((nv->display_segments[i] & ~511) != 0)];
 				break;
+			case 5:
+				[(DisplayView *)nv->display showBegin:((nv->display_segments[i] & ~511) != 0)];
+				break;
 			case 7:
 				if ((nv->display_segments[7] & ~511) != 0) {
 					if ((nv->display_segments[6] & ~511) != 0) {
@@ -361,6 +380,9 @@ void display_callback(struct nut_reg_t *nv) {
 				} else {
 					[(DisplayView *)nv->display setDeg];
 				}
+				break;
+			case 8:
+				[(DisplayView *)nv->display showDMY:((nv->display_segments[i] & ~511) != 0)];
 				break;
 			case 9:
 				[(DisplayView *)nv->display showFlagC:((nv->display_segments[i] & ~511) != 0)];
