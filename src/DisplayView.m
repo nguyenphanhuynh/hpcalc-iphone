@@ -62,6 +62,9 @@
 	digit[25] = [UIImage imageNamed:@"user.png"];
 	digit[26] = [UIImage imageNamed:@"prgm.png"];
 	digit[27] = [UIImage imageNamed:@"c.png"];
+
+	digit[28] = [UIImage imageNamed:@"begin.png"];
+	digit[29] = [UIImage imageNamed:@"dmy.png"];
 	
 	int i;                                                   
 	for (i=0; i<11; i++) {
@@ -74,21 +77,23 @@
 	dp = [[UIImageView alloc] initWithFrame:CGRectMake(240 -211, 97+21*0, 26, 21)];
 	[self addSubview: dp];
 	
-	f = [[UIImageView alloc] initWithFrame:CGRectMake(228 -211, 120, 11, 6)];
-	[self addSubview: f];
-	g = [[UIImageView alloc] initWithFrame:CGRectMake(228 -211, 131, 11, 8)];
-	[self addSubview: g];
-	c = [[UIImageView alloc] initWithFrame:CGRectMake(228 -211, 253, 11, 10)];
-	[self addSubview: c];
-
-	grad = [[UIImageView alloc] initWithFrame:CGRectMake(228 -211, 184, 11, 31)];
-	[self addSubview: grad];
-	rad = [[UIImageView alloc] initWithFrame:CGRectMake(228 -211, 192, 10, 23)];
-	[self addSubview: rad];
-
-	user = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 85, 9, 28)];
+	user = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 91 +0, 11, 26)];
 	[self addSubview: user];
-	prgm = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 270, 9, 29)];
+	f = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 91 +30, 11, 6)];
+	[self addSubview: f];
+	g = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 91 +41, 11, 7)];
+	[self addSubview: g];
+	begin = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 91 +60, 11, 29)];
+	[self addSubview: begin];
+	grad = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 91 +100, 11, 27)];
+	[self addSubview: grad];
+	rad = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 91 +107, 11, 20)];
+	[self addSubview: rad];
+	dmy = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 91 +133, 11, 25)];
+	[self addSubview: dmy];
+	c = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 91 +164, 11, 8)];
+	[self addSubview: c];
+	prgm = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 91 +184, 11, 28)];
 	[self addSubview: prgm];
 		
 	// set up to get Tap events (handleTapWithCount)
