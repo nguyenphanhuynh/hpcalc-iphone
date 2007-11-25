@@ -30,19 +30,19 @@
 	
 	[self setImage: [UIImage imageNamed: @"keypad.png"]];
 	
-	NSString * labels[10][4] = {
-		{ @"ON",	@"R/S",		@"SST",		@"SQRT(x)"	}, 
-		{ @"f",		@"GSB",		@"GTO",		@"e^x" 		},
-		{ @"g",		@"Rdown",   @"SIN",		@"10^x"   	},
-		{ @"STO",  	@"x <-> y",	@"COS",		@"y^x" 		},
-		{ @"RCL",   @"<-",		@"TAN",		@"1/x" 		},
-		{ @"ENTER", @"ENTER",   @"EEX",		@"CHS" 		},
-		{ @"0",		@"1",		@"4",		@"7" 		},
-		{ @".",		@"2",		@"5",		@"8" 		},
-		{ @"E+",    @"3",		@"6",		@"9" 		},
-		{ @"+",		@"-",		@"*",		@"/" 		},
+	int codes[10][4] = {
+		{  24,   17,   16,   19 }, 
+		{  56,   49,   48,   51 },
+		{ 120,  113,  112,  115 },
+		{ 200,  193,  192,  195 },
+		{ 136,  129,  128,  131 },
+		{ 132,  132,  135,  130 },
+		{ 197,  196,  199,  194 },
+		{ 117,  116,  119,  114 },
+		{  53,   52,   55,   50 },
+		{  21,   20,   23,   18 },
 	};
-	
+
 	// Setup pushbuttons
 	Key *button;
 	int r, c;
@@ -50,14 +50,14 @@
 		for (r=0; r<10; r++) {
 			if (c < 2 && r == 5) {
 			} else {
-				button = [[Key alloc] initWithFrame:CGRectMake(12+c*51 -8, 12+r*47 -4, 33 +2*8, 29 +2*4) label:labels[r][c] parent:self];
+				button = [[Key alloc] initWithFrame:CGRectMake(12+c*51 -8, 12+r*47 -4, 33 +2*8, 29 +2*4) code:codes[r][c] parent:self];
 				[button setShowPressFeedback:YES];
 				[button addTarget:button action:@selector(keyPressed) forEvents:1];
 				[self addSubview: button];
 			}
 		}
 	}
-	button = [[Key alloc] initWithFrame:CGRectMake(12+0*52 -8, 12+5*47 -4, 33+47 +2*8, 33 +2*4) label:@"ENTER" parent:self];
+	button = [[Key alloc] initWithFrame:CGRectMake(12+0*52 -8, 12+5*47 -4, 33+47 +2*8, 33 +2*4) code:132 parent:self];
 	[button setShowPressFeedback:YES];
 	[button addTarget:button action:@selector(keyPressed) forEvents:1];
 	[self addSubview: button];
@@ -68,9 +68,8 @@
 	return self;
 } 
 
-- (void) keyPressed: (NSString *) key {
-	// NSLog(@"Keypad: %@ pressed", key);
-	[_calc keyPressed:key];
+- (void) keyPressed: (int) code {
+	[_calc keyPressed:code];
 }
 
 

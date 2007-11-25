@@ -15,12 +15,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-APPNAME=HP-15C
-EXE=hp15c
+MODEL=15c
+APPNAME=HP-$(subst c,C,$(MODEL))
+EXE=hp$(MODEL)
 
 CC = /usr/local/bin/arm-apple-darwin-gcc
 LD = $(CC)
 CFLAGS += -I/Developer/SDKs/iPhone/include
+CFLAGS += -DAPPNAME='"$(APPNAME)"' -DMODEL='"$(MODEL)"'
 LDFLAGS = -isystem $(HEAVENLY) \
           -lobjc -lc \
           -framework CoreFoundation \
@@ -46,9 +48,9 @@ OBJS = build/main.o \
 	   build/hp15c.o \
 	   $(NONPAREIL)
 
-IMGS = img/Default.png \
-       img/keypad.png \
-       img/display.png \
+IMGS = img/Default-$(MODEL).png \
+       img/keypad-$(MODEL).png \
+       img/display-$(MODEL).png \
 	   img/9.png img/8.png img/7.png \
 	   img/6.png img/5.png img/4.png \
 	   img/3.png img/2.png img/1.png \
@@ -61,13 +63,17 @@ IMGS = img/Default.png \
 	   img/i.png img/P.png\
 	   img/user.png img/prgm.png \
 	   img/begin.png img/dmy.png \
-       img/icon.png
+       img/icon-$(MODEL).png
 	
-BUNDLE = build/$(EXE) src/15c.obj $(IMGS)
+BUNDLE = build/$(EXE) src/$(MODEL).obj $(IMGS)
 
 
 .PHONY: all
-all: build/$(APPNAME).app
+all:
+	$(MAKE) app MODEL=15c
+	
+.PHONY: app
+app: build/$(APPNAME).app
 
 .PHONY: upload
 upload: build/$(APPNAME).app
@@ -92,13 +98,16 @@ build/Info.plist: Makefile version $(BUNDLE)
 	tools/incrBuildNum.pl
 	tools/genInfoPlist.pl $(APPNAME) $(EXE) > build/Info.plist
 
-
 build/$(APPNAME).app: $(BUNDLE) build/Info.plist
 	mkdir -p build/$(APPNAME).app
 	@list='$?'; for p in $$list; do \
 		echo cp $$p build/$(APPNAME).app/; \
 		cp $$p build/$(APPNAME).app/; \
 	done
+	@mv build/$(APPNAME).app/keypad-*.png build/$(APPNAME).app/keypad.png
+	@mv build/$(APPNAME).app/display-*.png build/$(APPNAME).app/display.png
+	@mv build/$(APPNAME).app/Default-*.png build/$(APPNAME).app/Default.png
+	@mv build/$(APPNAME).app/icon-*.png build/$(APPNAME).app/icon.png
 	@touch build/$(APPNAME).app
 
 build/$(EXE): $(OBJS)
@@ -112,4 +121,4 @@ build/%.o: src/%.c
 
 .PHONY: clean
 clean:
-	rm -rf build/$(APPNAME).app build/*
+	rm -rf build/HP-*.app build/*

@@ -35,12 +35,11 @@
 	nut_reg_t			* nv;
 	NSMutableArray  	* keyQueue;
 	NSTimeInterval  	lastRun;
-	NSMutableDictionary * keyMap;
 }
 
 - (void) _updateDisplay;
 - (id) initWithDisplay: (DisplayView *) dv;
-- (void) processKeypress: (NSString *) key;
+- (void) processKeypress: (int) code;
 - (void) executeCycle;
 - (void) readKeys;
 

@@ -19,11 +19,11 @@
 @class KeypadView;
 
 @interface Key : UIPushButton {
-	NSString * _label;
+	int _code;
 	KeypadView *_keypad;
 }
         
-- (id) initWithFrame: (CGRect) frame label: (NSString *) lbl parent: (KeypadView *) p;
+- (id) initWithFrame: (CGRect) frame code: (int) code parent: (KeypadView *) p;
 - (void) keyPressed;
 
 @end
