@@ -22,7 +22,6 @@ EXE=hp$(MODEL)
 CC = /usr/local/bin/arm-apple-darwin-gcc
 LD = $(CC)
 CFLAGS += -I/Developer/SDKs/iPhone/include
-CFLAGS += -DAPPNAME='"$(APPNAME)"' -DMODEL='"$(MODEL)"'
 LDFLAGS = -isystem $(HEAVENLY) \
           -lobjc -lc \
           -framework CoreFoundation \
@@ -45,7 +44,7 @@ OBJS = build/main.o \
        build/KeypadView.o \
        build/DisplayView.o \
        build/Key.o \
-	   build/hpcalc.o \
+	   build/$(EXE).o \
 	   $(NONPAREIL)
 
 IMGS = img/Default-$(MODEL).png \
@@ -71,6 +70,7 @@ BUNDLE = build/$(EXE) src/$(MODEL).obj $(IMGS)
 .PHONY: all
 all:
 	$(MAKE) app MODEL=15c
+	$(MAKE) app MODEL=12c
 	
 .PHONY: app
 app: build/$(APPNAME).app
@@ -78,40 +78,65 @@ app: build/$(APPNAME).app
 .PHONY: upload
 upload: build/$(APPNAME).app
 	rsync -avz --delete build/$(APPNAME).app/ $(IPHONEIP):/Applications/$(APPNAME).app/
+
+.PHONY: package
+package:
+	$(MAKE) pkg MODEL=15c
+	$(MAKE) pkg MODEL=12c
 	
-package: build/$(APPNAME).app	
+pkg: build/$(APPNAME).app	
 	tools/buildPackage.pl $(APPNAME) $(EXE)
 
-publish: package
+publish: pkg
 	@# Don't need to copy .zip file since it will go in the files section
 	@# cp build/`cat build/latest`.zip ../repo
-	cp build/`cat build/latest`.xml ../repo
-	cp build/`cat build/latest`.xml ../repo/latest.xml
+	cp build/`cat build/latest.$(EXE)`.xml ../repo
+	cat `ls ../repo/hp15c-*.xml | sed -e "s/.xml//" | sort -r | head -n 1`.xml > ../repo/latest.xml
+	cat `ls ../repo/hp12c-*.xml | sed -e "s/.xml//" | sort -r | head -n 1`.xml >> ../repo/latest.xml
 	cat src/packages.xml > ../repo/packages.xml
-	cat build/`cat build/latest`.xml >> ../repo/packages.xml
+	cat ../repo/latest.xml >> ../repo/packages.xml
 	echo "</array>" >> ../repo/packages.xml
 	echo "</dict>" >> ../repo/packages.xml
 	echo "</plist>" >> ../repo/packages.xml
-
-build/Info.plist: Makefile version $(BUNDLE)
+	
+build/Info-$(MODEL).plist: Makefile version.$(EXE) $(BUNDLE)
 	tools/updateSvnRev.pl > svnrev
 	tools/incrBuildNum.pl
-	tools/genInfoPlist.pl $(APPNAME) $(EXE) > build/Info.plist
+	tools/genInfoPlist.pl $(APPNAME) $(EXE) > build/Info-$(MODEL).plist
 
-build/$(APPNAME).app: $(BUNDLE) build/Info.plist
+build/$(APPNAME).app: $(BUNDLE) build/Info-$(MODEL).plist
 	mkdir -p build/$(APPNAME).app
 	@list='$?'; for p in $$list; do \
 		echo cp $$p build/$(APPNAME).app/; \
 		cp $$p build/$(APPNAME).app/; \
 	done
-	@mv build/$(APPNAME).app/keypad-*.png build/$(APPNAME).app/keypad.png
-	@mv build/$(APPNAME).app/display-*.png build/$(APPNAME).app/display.png
-	@mv build/$(APPNAME).app/Default-*.png build/$(APPNAME).app/Default.png
-	@mv build/$(APPNAME).app/icon-*.png build/$(APPNAME).app/icon.png
+	@if test -e build/$(APPNAME).app/keypad-$(MODEL).png; then \
+		rm -f build/$(APPNAME).app/keypad.png; \
+		mv build/$(APPNAME).app/keypad-*.png build/$(APPNAME).app/keypad.png; \
+	fi;
+	@if test -e build/$(APPNAME).app/display-$(MODEL).png; then \
+		rm -f build/$(APPNAME).app/display.png; \
+		mv build/$(APPNAME).app/display-*.png build/$(APPNAME).app/display.png; \
+	fi;
+	@if test -e build/$(APPNAME).app/Default-$(MODEL).png; then \
+		rm -f build/$(APPNAME).app/Default.png; \
+		mv build/$(APPNAME).app/Default-*.png build/$(APPNAME).app/Default.png; \
+	fi;
+	@if test -e build/$(APPNAME).app/icon-$(MODEL).png; then \
+		rm -f build/$(APPNAME).app/icon.png; \
+		mv build/$(APPNAME).app/icon-*.png build/$(APPNAME).app/icon.png; \
+	fi;
+	@if test -e build/$(APPNAME).app/Info-$(MODEL).plist; then \
+		rm -f build/$(APPNAME).app/Info.plist; \
+		mv build/$(APPNAME).app/Info-$(MODEL).plist build/$(APPNAME).app/Info.plist; \
+	fi;
 	@touch build/$(APPNAME).app
 
 build/$(EXE): $(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^
+
+build/$(EXE).o: src/hpcalc.m
+	$(CC) $(CFLAGS) -DAPPNAME='"$(APPNAME)"' -DMODEL='"$(MODEL)"' -c $(CPPFLAGS) $< -o $@
 
 build/%.o: src/%.m
 	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@

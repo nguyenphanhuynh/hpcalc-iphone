@@ -27,13 +27,13 @@ $id = "net.fors.iphone.$id";
 
 $svnrev = `cat svnrev`;
 $build = `cat buildnum`;
-$ver = `cat version`; # . "r${svnrev}x${build}";
+$ver = `cat version.$exe`; # . "r${svnrev}x${build}";
 $ver =~ s/[\r\n]//g;
            
 $archive = $name;
 $archive =~ s/\-//g;
 $archive =~ tr/A-Z/a-z/;
-$archive .= "-" . `cat version`; # . "r${svnrev}x${build}";
+$archive .= "-" . `cat version.$exe`; # . "r${svnrev}x${build}";
 $archive =~ s/[\r\n]//g;
 
 $latest = $archive;
@@ -90,6 +90,7 @@ print FP "    <string>http://hpcalc-iphone.googlecode.com/</string>\n";
 
 $desc = `cat description`;
 $desc =~ s/[\r\n]/ /g;
+$desc =~ s/\$\(\(NAME\)\)/$name/i;
 print FP "    <key>description</key>\n";
 print FP "    <string>$desc</string>\n";
 
@@ -118,4 +119,4 @@ print FP "</dict>\n";
 
 close(FP);
 
-exec `echo $latest > build/latest`;
+exec `echo $latest > build/latest.$exe`;
