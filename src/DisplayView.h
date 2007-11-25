@@ -32,6 +32,8 @@
 - (void) showFlagG: (BOOL) visible;
 - (void) showFlagC: (BOOL) visible;
 - (void) showUser: (BOOL) visible;
+- (void) showBegin: (BOOL) visible;
+- (void) showDMY: (BOOL) visible;
 - (void) showPrgm: (BOOL) visible;
 - (void) showComma: (BOOL) visible position: (int) pos;
 - (void) setDeg;
