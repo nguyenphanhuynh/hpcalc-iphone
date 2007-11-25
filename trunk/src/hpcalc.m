@@ -17,10 +17,10 @@
  */
 
 #import "CalculatorApp.h"
-#import "hp15c.h"
+#import "hpcalc.h"
 #import "DisplayView.h"
 
-@implementation HP15C
+@implementation HPCalc
 
 - (void) _updateDisplay {
 }

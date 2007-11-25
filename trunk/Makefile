@@ -45,7 +45,7 @@ OBJS = build/main.o \
        build/KeypadView.o \
        build/DisplayView.o \
        build/Key.o \
-	   build/hp15c.o \
+	   build/hpcalc.o \
 	   $(NONPAREIL)
 
 IMGS = img/Default-$(MODEL).png \

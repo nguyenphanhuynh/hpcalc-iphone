@@ -18,13 +18,13 @@
 
 @class KeypadView;
 @class DisplayView;
-@class HP15C;
+@class HPCalc;
 
 @interface CalculatorView : UIView {
 	UIImageView		* background;
 	KeypadView		* keypad;
 	DisplayView		* display;
-	HP15C			* calc;
+	HPCalc			* calc;
 }
 
 - (id) initWithFrame: (CGRect) frame;

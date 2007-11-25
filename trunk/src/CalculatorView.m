@@ -20,7 +20,7 @@
 #import "CalculatorView.h"
 #import "KeypadView.h"
 #import "DisplayView.h"
-#import "hp15c.h"
+#import "hpcalc.h"
 
 @implementation CalculatorView
 
@@ -35,7 +35,7 @@
 	display = [[DisplayView alloc] initWithFrame: frame];
 	[self addSubview: display];
 	
-	calc = [[HP15C alloc] initWithDisplay:display];
+	calc = [[HPCalc alloc] initWithDisplay:display];
 	[calc _updateDisplay];
 	
 	return self;
