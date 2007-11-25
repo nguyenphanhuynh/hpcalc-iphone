@@ -30,7 +30,7 @@
 #define NNPR_WSIZE		56.0
 
 
-@interface HP15C : NSObject {
+@interface HPCalc : NSObject {
 	DisplayView			* _display;
 	nut_reg_t			* nv;
 	NSMutableArray  	* keyQueue;
