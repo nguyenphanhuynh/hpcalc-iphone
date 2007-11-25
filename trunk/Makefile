@@ -60,6 +60,7 @@ IMGS = img/Default.png \
 	   img/r.png img/u.png img/n.png \
 	   img/i.png img/P.png\
 	   img/user.png img/prgm.png \
+	   img/begin.png img/dmy.png \
        img/icon.png
 	
 BUNDLE = build/$(EXE) src/15c.obj $(IMGS)

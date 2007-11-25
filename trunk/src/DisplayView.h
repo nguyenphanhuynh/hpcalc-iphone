@@ -17,13 +17,14 @@
  */
 
 @interface DisplayView : UIImageView {
-	UIImage 		* digit[28];
+	UIImage 		* digit[30];
 	UIImageView		* pos[11];
 	UIImageView		* comma[11];
 	UIImageView		* dp;
 	UIImageView		* f, * g, *c;
 	UIImageView		* grad, * rad;
 	UIImageView		* user, * prgm;
+	UIImageView		* begin, * dmy;
 }
 
 - (void) displayString: (NSString *) str;
