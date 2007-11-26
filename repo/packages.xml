@@ -38,7 +38,7 @@
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/</string>
     <key>description</key>
-    <string>HP-15C advanced scientific calculator emulator. </string>
+    <string>HP-15C advanced scientific programmable calculator emulator. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
