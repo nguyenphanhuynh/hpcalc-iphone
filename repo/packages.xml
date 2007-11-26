@@ -86,23 +86,23 @@
     <key>name</key>
     <string>HP-12C</string>
     <key>version</key>
-    <string>1.0</string>
+    <string>1.0.1</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp12c-1.0.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp12c-1.0.1.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>165904</string>
+    <string>165984</string>
     <key>date</key>
-    <string>1196031416</string>
+    <string>1196047535</string>
     <key>hash</key>
-    <string>d2c682ccb91b06151f915041101996ff</string>
+    <string>af568780da0ed2dcb0135f03a71063fd</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/</string>
     <key>description</key>
-    <string>HP-12C calculator emulator. </string>
+    <string>HP-12C financial programmable calculator emulator.  Version 1.0.1 hides the annoying status bar during launch. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
