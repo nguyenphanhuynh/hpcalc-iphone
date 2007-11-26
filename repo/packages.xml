@@ -22,23 +22,23 @@
     <key>name</key>
     <string>HP-15C</string>
     <key>version</key>
-    <string>1.0.1</string>
+    <string>1.0.2</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.1.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.2.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>198559</string>
+    <string>201881</string>
     <key>date</key>
-    <string>1196031412</string>
+    <string>1196061077</string>
     <key>hash</key>
-    <string>bcd16d8a86387cc210c535fa4bd9f84c</string>
+    <string>b5fba81d20ca6946c1dad633b446c5c9</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/</string>
     <key>description</key>
-    <string>HP-15C advanced scientific programmable calculator emulator. </string>
+    <string>HP-15C advanced scientific programmable calculator emulator. 1.0.2 fixes typo on keyboard. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
@@ -202,6 +202,70 @@
     		<array>
     			<string>RemovePath</string>
     			<string>/Applications/HP-11C.app</string>
+    		</array>
+    	</array>
+    </dict>        
+    <key>category</key>
+    <string>Utilities</string>
+</dict>
+<dict>
+    <key>bundleIdentifier</key>
+    <string>net.fors.iphone.hp16c</string>
+    <key>name</key>
+    <string>HP-16C</string>
+    <key>version</key>
+    <string>1.0</string>
+    <key>location</key>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp16c-1.0.zip</string>
+    <key>maintainer</key>
+    <string>Thomas Fors</string>
+    <key>contact</key>
+    <string>tom@fors.net</string>
+    <key>size</key>
+    <string>178458</string>
+    <key>date</key>
+    <string>1196061031</string>
+    <key>hash</key>
+    <string>8a487a550533d0dce37638c8df82e9b8</string>
+    <key>url</key>
+    <string>http://hpcalc-iphone.googlecode.com/</string>
+    <key>description</key>
+    <string>HP-16C computer scientist programmable calculator emulator. </string>
+    <key>scripts</key>
+    <dict>
+    	<key>install</key>
+    	<array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-16C.app</string>
+    			<string>/Applications/HP-16C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-16C.app/hp16c --init</string>
+    		</array>
+    	</array>
+    	<key>update</key>
+    	<array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-16C.app</string>
+    		</array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-16C.app</string>
+    			<string>/Applications/HP-16C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-16C.app/hp16c --init</string>
+    		</array>
+    	</array>
+    	<key>uninstall</key>
+    	<array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-16C.app</string>
     		</array>
     	</array>
     </dict>        
