@@ -39,13 +39,13 @@ NONPAREIL = build/proc_nut.o \
 			build/digit_ops.o \
 			build/voyager_lcd.o
 
-OBJS = build/main.o \
+OBJS = build/main-$(MODEL).o \
        build/CalculatorApp.o \
        build/CalculatorView.o \
        build/KeypadView.o \
        build/DisplayView.o \
        build/Key.o \
-	   build/$(EXE).o \
+	   build/hpcalc-$(MODEL).o \
 	   $(NONPAREIL)
 
 IMGS = img/Default-$(MODEL).png \
@@ -72,6 +72,7 @@ BUNDLE = build/$(EXE) src/$(MODEL).obj $(IMGS)
 all:
 	$(MAKE) app MODEL=15c
 	$(MAKE) app MODEL=12c
+	$(MAKE) app MODEL=11c
 	
 .PHONY: app
 app: build/$(APPNAME).app
@@ -84,6 +85,7 @@ upload: build/$(APPNAME).app
 package:
 	$(MAKE) pkg MODEL=15c
 	$(MAKE) pkg MODEL=12c
+	$(MAKE) pkg MODEL=11c
 	
 pkg: build/$(APPNAME).app	
 	tools/buildPackage.pl $(APPNAME) $(EXE)
@@ -94,6 +96,7 @@ publish: pkg
 	cp build/`cat build/latest.$(EXE)`.xml ../repo
 	cat `ls ../repo/hp15c-*.xml | sed -e "s/.xml//" | sort -r | head -n 1`.xml > ../repo/latest.xml
 	cat `ls ../repo/hp12c-*.xml | sed -e "s/.xml//" | sort -r | head -n 1`.xml >> ../repo/latest.xml
+	cat `ls ../repo/hp11c-*.xml | sed -e "s/.xml//" | sort -r | head -n 1`.xml >> ../repo/latest.xml
 	cat src/packages.xml > ../repo/packages.xml
 	cat ../repo/latest.xml >> ../repo/packages.xml
 	echo "</array>" >> ../repo/packages.xml
@@ -136,7 +139,10 @@ build/$(APPNAME).app: $(BUNDLE) build/Info-$(MODEL).plist
 build/$(EXE): $(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^
 
-build/$(EXE).o: src/hpcalc.m
+build/hpcalc-$(MODEL).o: src/hpcalc.m
+	$(CC) $(CFLAGS) -DAPPNAME='"$(APPNAME)"' -c $(CPPFLAGS) $< -o $@
+
+build/main-$(MODEL).o: src/main.m
 	$(CC) $(CFLAGS) -DAPPNAME='"$(APPNAME)"' -c $(CPPFLAGS) $< -o $@
 
 build/%.o: src/%.m
