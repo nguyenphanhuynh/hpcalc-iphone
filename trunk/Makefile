@@ -22,6 +22,7 @@ EXE=hp$(MODEL)
 CC = /usr/local/bin/arm-apple-darwin-gcc
 LD = $(CC)
 CFLAGS += -I/Developer/SDKs/iPhone/include
+CFLAGS += -DMODEL='"$(MODEL)"'
 LDFLAGS = -isystem $(HEAVENLY) \
           -lobjc -lc \
           -framework CoreFoundation \
@@ -136,7 +137,7 @@ build/$(EXE): $(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^
 
 build/$(EXE).o: src/hpcalc.m
-	$(CC) $(CFLAGS) -DAPPNAME='"$(APPNAME)"' -DMODEL='"$(MODEL)"' -c $(CPPFLAGS) $< -o $@
+	$(CC) $(CFLAGS) -DAPPNAME='"$(APPNAME)"' -c $(CPPFLAGS) $< -o $@
 
 build/%.o: src/%.m
 	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@

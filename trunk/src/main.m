@@ -40,11 +40,11 @@ int main(int argc, char **argv) {
 		/* Set springboard to hide status bar on launch */
 		NSString *path = [NSString stringWithString:@"/System/Library/CoreServices/SpringBoard.app/DefaultApplicationState.plist"];
 		NSMutableDictionary *sb = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-		NSMutableDictionary *me = [sb objectForKey:@"net.fors.iphone.hp15c"];
+		NSMutableDictionary *me = [sb objectForKey:[NSString stringWithFormat:@"net.fors.iphone.hp%s", MODEL]];
 		if (me == nil) {
 			me = [[NSMutableDictionary alloc] init];
 			[me setObject:[NSNumber numberWithInt:2] forKey:@"SBDefaultStatusBarModeKey"];
-	   		[sb setObject:me forKey:@"net.fors.iphone.hp15c"];
+	   		[sb setObject:me forKey:[NSString stringWithFormat:@"net.fors.iphone.hp%s", MODEL]];
 			[sb writeToFile:path atomically:YES];
 		}     
 	} else {
