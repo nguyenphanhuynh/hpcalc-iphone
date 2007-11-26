@@ -20,7 +20,7 @@
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/</string>
     <key>description</key>
-    <string>HP-15C calculator emulator. </string>
+    <string>HP-15C advanced scientific calculator emulator.</string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
@@ -84,7 +84,7 @@
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/</string>
     <key>description</key>
-    <string>HP-12C financial programmable calculator emulator.  Version 1.0.1 hides the annoying status bar during launch. </string>
+    <string>HP-12C financial programmable calculator emulator.  Version 1.0.1 hides the status bar at launch. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
