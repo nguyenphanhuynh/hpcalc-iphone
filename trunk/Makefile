@@ -55,7 +55,9 @@ IMGS = img/Default-$(MODEL).png \
 	   img/6.png img/5.png img/4.png \
 	   img/3.png img/2.png img/1.png \
 	   img/0.png img/neg.png \
+	   img/a.png img/CC.png img/FF.png \
 	   img/comma.png img/decimal.png \
+	   img/d.png img/b.png img/h.png \
 	   img/f.png img/g.png img/c.png\
 	   img/grad.png img/rad.png \
 	   img/E.png img/RR.png img/O.png \
@@ -73,6 +75,7 @@ all:
 	$(MAKE) app MODEL=15c
 	$(MAKE) app MODEL=12c
 	$(MAKE) app MODEL=11c
+	$(MAKE) app MODEL=16c
 	
 .PHONY: app
 app: build/$(APPNAME).app
@@ -86,6 +89,7 @@ package:
 	$(MAKE) pkg MODEL=15c
 	$(MAKE) pkg MODEL=12c
 	$(MAKE) pkg MODEL=11c
+	$(MAKE) pkg MODEL=16c
 	
 pkg: build/$(APPNAME).app	
 	tools/buildPackage.pl $(APPNAME) $(EXE)
@@ -97,6 +101,7 @@ publish: pkg
 	cat `ls ../repo/hp15c-*.xml | sed -e "s/.xml//" | sort -r | head -n 1`.xml > ../repo/latest.xml
 	cat `ls ../repo/hp12c-*.xml | sed -e "s/.xml//" | sort -r | head -n 1`.xml >> ../repo/latest.xml
 	cat `ls ../repo/hp11c-*.xml | sed -e "s/.xml//" | sort -r | head -n 1`.xml >> ../repo/latest.xml
+	cat `ls ../repo/hp16c-*.xml | sed -e "s/.xml//" | sort -r | head -n 1`.xml >> ../repo/latest.xml
 	cat src/packages.xml > ../repo/packages.xml
 	cat ../repo/latest.xml >> ../repo/packages.xml
 	echo "</array>" >> ../repo/packages.xml
