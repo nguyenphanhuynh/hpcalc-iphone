@@ -1,4 +1,4 @@
-#summary How to install HP-15C on your iPhone
+#summary How to install the HP calculator on your iPhone
 #labels Featured
 
 == Prerequisite ==
@@ -16,4 +16,4 @@ The easiest method of installing is with Installer.app:
   # Enter the following url: {{{http://tinyurl.com/2b32sn}}}
   # Click OK.
   # Go to the Install tab and scroll down to Utilities.
-  # In the Utilities section, you should see HP-15C. Select it and tap Install.
+  # In the Utilities section, you should see HP-11C, -12C, -15C, and -16C. Select one and tap Install.
