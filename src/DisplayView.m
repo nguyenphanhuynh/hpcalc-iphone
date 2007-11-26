@@ -65,6 +65,13 @@
 
 	digit[28] = [UIImage imageNamed:@"begin.png"];
 	digit[29] = [UIImage imageNamed:@"dmy.png"];
+
+	digit[30] = [UIImage imageNamed:@"h.png"];
+	digit[31] = [UIImage imageNamed:@"d.png"];
+	digit[32] = [UIImage imageNamed:@"b.png"];
+	digit[33] = [UIImage imageNamed:@"a.png"];
+	digit[34] = [UIImage imageNamed:@"CC.png"];
+	digit[35] = [UIImage imageNamed:@"FF.png"];
 	
 	int i;                                                   
 	for (i=0; i<11; i++) {
@@ -74,8 +81,8 @@
 		[self addSubview: pos[11-i-1]];
 	}
 	
-	dp = [[UIImageView alloc] initWithFrame:CGRectMake(240 -211, 97+21*0, 26, 21)];
-	[self addSubview: dp];
+	// dp = [[UIImageView alloc] initWithFrame:CGRectMake(240 -211, 97+21*0, 26, 21)];
+	// [self addSubview: dp];
 	
 	user = [[UIImageView alloc] initWithFrame:CGRectMake(229 -211, 91 +0, 11, 26)];
 	[self addSubview: user];
@@ -107,7 +114,7 @@
 
 	// NSLog(@"displayString: %@ (%d)", str, [str length]);
 
-	[dp setImage:nil];
+	// [dp setImage:nil];
 	
 	int i;
 	for (i=0; i<[str length]; i++) {
@@ -122,11 +129,11 @@
 				if (p>=0)
 					[pos[p--] setImage:digit[16]];
 				break;
-			case 46:
-				// .
-				[dp setImage:digit[10]];
-				[dp setFrame:CGRectMake(240 -211, 97+21*(10-p-2), 26, 21)];
-				break;
+			// case 46:
+			// 	// .
+			// 	[dp setImage:digit[10]];
+			// 	[dp setFrame:CGRectMake(240 -211, 97+21*(10-p-2), 26, 21)];
+			// 	break;
 			case 48:
 			case 49:
 			case 50:
@@ -180,6 +187,36 @@
 				// i
 				if (p>=0)
 					[pos[p--] setImage:digit[23]];
+				break; 
+			case 98:
+				// b
+				if (p>=0)
+					[pos[p--] setImage:digit[32]];
+				break; 
+			case 100:
+				// d
+				if (p>=0)
+					[pos[p--] setImage:digit[31]];
+				break; 
+			case 104:
+				// h
+				if (p>=0)
+					[pos[p--] setImage:digit[30]];
+				break; 
+			case 65:
+				// A
+				if (p>=0)
+					[pos[p--] setImage:digit[33]];
+				break; 
+			case 67:
+				// C
+				if (p>=0)
+					[pos[p--] setImage:digit[34]];
+				break; 
+			case 70:
+				// F
+				if (p>=0)
+					[pos[p--] setImage:digit[35]];
 				break; 
 			default:
 				break;
@@ -250,6 +287,14 @@
 - (void) showComma: (BOOL) visible position: (int) p {
 	if (visible) {
 		[comma[10-p] setImage:digit[11]];
+	} else {
+		[comma[10-p] setImage:nil];
+	}
+}
+
+- (void) showDecimal: (BOOL) visible position: (int) p {
+	if (visible) {
+		[comma[10-p] setImage:digit[10]];
 	} else {
 		[comma[10-p] setImage:nil];
 	}
@@ -341,6 +386,12 @@ void display_callback(struct nut_reg_t *nv) {
 				case 80:	disp[j++] = 'R'; break;
 				case 33:	disp[j++] = 'r'; break;
 				case 98:	disp[j++] = 'u'; break;
+				case 124:	disp[j++] = 'b'; break;
+				case 94:	disp[j++] = 'd'; break;
+				case 116:	disp[j++] = 'h'; break;
+				case 119:	disp[j++] = 'A'; break;
+				case 57:	disp[j++] = 'C'; break;
+				case 113:	disp[j++] = 'F'; break;
 				case 0:		disp[j++] = ' '; break;
 				default:	
 					NSLog(@"unknown: %d", nv->display_segments[i]);
@@ -402,6 +453,7 @@ void display_callback(struct nut_reg_t *nv) {
 
 		for (i=0; i<11; i++) {
 			[(DisplayView *)nv->display showComma:((nv->display_segments[i] & 256) != 0) position:i];
+			[(DisplayView *)nv->display showDecimal:((nv->display_segments[i] & 384) == 128) position:i];
 		}
 	}
 }

@@ -17,7 +17,7 @@
  */
 
 @interface DisplayView : UIImageView {
-	UIImage 		* digit[30];
+	UIImage 		* digit[36];
 	UIImageView		* pos[11];
 	UIImageView		* comma[11];
 	UIImageView		* dp;
