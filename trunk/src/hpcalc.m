@@ -50,10 +50,14 @@
 
 	if ( ! [self loadState] ) {
 		[self processKeypress:24];  // auto on
+		[self processKeypress:-1];
 		[self processKeypress:129]; // clear Pr Error
+		[self processKeypress:-1];
 	} else {
 		[self processKeypress:24];  // auto on
+		[self processKeypress:-1];
 		[self processKeypress:24];  // auto on
+		[self processKeypress:-1];
 	}
 	
 	[NSThread detachNewThreadSelector:@selector(tick) toTarget:self withObject:nil];
@@ -166,7 +170,6 @@
 
 - (void) processKeypress: (int) code {
 	[keyQueue insertObject:[NSNumber numberWithInt:code] atIndex:0];
-	[keyQueue insertObject:[NSNumber numberWithInt:-1] atIndex:0];
 }
 
 - (void) tick {

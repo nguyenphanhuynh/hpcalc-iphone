@@ -29,8 +29,14 @@
 	return self;
 }   
 
-- (void) keyPressed {
+- (void)mouseDown:(struct __GSEvent *)event {
 	[_keypad keyPressed:_code];
+	[super mouseDown:event];
+}
+
+- (void)mouseUp:(struct __GSEvent *)event {
+	[_keypad keyPressed:-1];
+	[super mouseUp:event];
 }
 
 @end

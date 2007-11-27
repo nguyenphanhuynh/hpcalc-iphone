@@ -24,6 +24,7 @@
 }
         
 - (id) initWithFrame: (CGRect) frame code: (int) code parent: (KeypadView *) p;
-- (void) keyPressed;
+- (void)mouseDown:(struct __GSEvent *)event;
+- (void)mouseUp:(struct __GSEvent *)event;
 
 @end
