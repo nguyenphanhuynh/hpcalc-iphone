@@ -452,8 +452,13 @@ void display_callback(struct nut_reg_t *nv) {
 		// NSLog(@"[%s]", disp);
 
 		for (i=0; i<11; i++) {
-			[(DisplayView *)nv->display showComma:((nv->display_segments[i] & 256) != 0) position:i];
-			[(DisplayView *)nv->display showDecimal:((nv->display_segments[i] & 384) == 128) position:i];
+			if ((nv->display_segments[i] & 256) != 0) {
+				[(DisplayView *)nv->display showComma:YES position:i];
+			} else if ((nv->display_segments[i] & 384) == 128) {
+				[(DisplayView *)nv->display showDecimal:YES position:i];
+			} else {
+				[(DisplayView *)nv->display showDecimal:NO position:i];
+			}
 		}
 	}
 }
