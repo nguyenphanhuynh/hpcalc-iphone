@@ -91,6 +91,7 @@ print FP "    <string>http://hpcalc-iphone.googlecode.com/</string>\n";
 $desc = `cat description.$exe`;
 $desc =~ s/[\r\n]/ /g;
 $desc =~ s/\$\(\(NAME\)\)/$name/i;
+$desc =~ s/\$\(\(VER\)\)/$ver/i;
 print FP "    <key>description</key>\n";
 print FP "    <string>$desc</string>\n";
 
