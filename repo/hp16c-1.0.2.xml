@@ -1,0 +1,68 @@
+<dict>
+    <key>bundleIdentifier</key>
+    <string>net.fors.iphone.hp16c</string>
+    <key>name</key>
+    <string>HP-16C</string>
+    <key>version</key>
+    <string>1.0.2</string>
+    <key>location</key>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp16c-1.0.2.zip</string>
+    <key>maintainer</key>
+    <string>Thomas Fors</string>
+    <key>contact</key>
+    <string>tom@fors.net</string>
+    <key>size</key>
+    <string>180411</string>
+    <key>date</key>
+    <string>1196207570</string>
+    <key>hash</key>
+    <string>baf220322d6e0b2e88ab6fcf0f209a75</string>
+    <key>url</key>
+    <string>http://hpcalc-iphone.googlecode.com/</string>
+    <key>description</key>
+    <string>HP-16C computer scientist programmable calculator emulator. v1.0.2 fixes keypad and display issues. </string>
+    <key>scripts</key>
+    <dict>
+    	<key>install</key>
+    	<array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-16C.app</string>
+    			<string>/Applications/HP-16C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-16C.app/hp16c --init</string>
+    		</array>
+    	</array>
+    	<key>update</key>
+    	<array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-16C.app</string>
+    		</array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-16C.app</string>
+    			<string>/Applications/HP-16C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-16C.app/hp16c --init</string>
+    		</array>
+    	</array>
+    	<key>uninstall</key>
+    	<array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-16C.app/hp16c --reset</string>
+    		</array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-16C.app</string>
+    		</array>
+    	</array>
+    </dict>        
+    <key>category</key>
+    <string>Utilities</string>
+</dict>
