@@ -22,23 +22,23 @@
     <key>name</key>
     <string>HP-15C</string>
     <key>version</key>
-    <string>1.0.2</string>
+    <string>1.0.3</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.2.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.3.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>201881</string>
+    <string>203270</string>
     <key>date</key>
-    <string>1196061077</string>
+    <string>1196144680</string>
     <key>hash</key>
-    <string>b5fba81d20ca6946c1dad633b446c5c9</string>
+    <string>25243a2920667e70d08093da2eebfe37</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/</string>
     <key>description</key>
-    <string>HP-15C advanced scientific programmable calculator emulator. 1.0.2 fixes typo on keyboard. </string>
+    <string>HP-15C advanced scientific programmable calculator emulator. v1.0.3 adds persistent memory. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
@@ -86,23 +86,23 @@
     <key>name</key>
     <string>HP-12C</string>
     <key>version</key>
-    <string>1.0.1</string>
+    <string>1.0.2</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp12c-1.0.1.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp12c-1.0.2.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>165984</string>
+    <string>170512</string>
     <key>date</key>
-    <string>1196047535</string>
+    <string>1196144677</string>
     <key>hash</key>
-    <string>af568780da0ed2dcb0135f03a71063fd</string>
+    <string>a2927af7ce2d07fca8a8a7a4d0350ac2</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/</string>
     <key>description</key>
-    <string>HP-12C financial programmable calculator emulator.  Version 1.0.1 hides the status bar at launch. </string>
+    <string>HP-12C financial programmable calculator emulator. v1.0.2 adds persistent memory. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
@@ -150,23 +150,23 @@
     <key>name</key>
     <string>HP-11C</string>
     <key>version</key>
-    <string>1.0</string>
+    <string>1.0.1</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp11c-1.0.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp11c-1.0.1.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>173709</string>
+    <string>178238</string>
     <key>date</key>
-    <string>1196053171</string>
+    <string>1196144674</string>
     <key>hash</key>
-    <string>264d01d85f99cf8dafb857ccf1bd7561</string>
+    <string>f1611983bb6a83ea1c39233c8f7acb65</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/</string>
     <key>description</key>
-    <string>HP-11C scientific programmable calculator emulator. </string>
+    <string>HP-11C scientific programmable calculator emulator. v1.0.1 adds persistent memory. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
@@ -214,23 +214,23 @@
     <key>name</key>
     <string>HP-16C</string>
     <key>version</key>
-    <string>1.0</string>
+    <string>1.0.1</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp16c-1.0.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp16c-1.0.1.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>178458</string>
+    <string>179854</string>
     <key>date</key>
-    <string>1196061031</string>
+    <string>1196144682</string>
     <key>hash</key>
-    <string>8a487a550533d0dce37638c8df82e9b8</string>
+    <string>e723a313d7b6357e9718c0f98a99e7ae</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/</string>
     <key>description</key>
-    <string>HP-16C computer scientist programmable calculator emulator. </string>
+    <string>HP-16C computer scientist programmable calculator emulator. v1.0.1 adds persistent memory. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
