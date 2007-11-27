@@ -183,8 +183,7 @@ static void voyager_display_update (nut_reg_t *nut_reg, voyager_display_reg_t *d
 	for (digit = 0; digit < VOYAGER_DISPLAY_DIGITS; digit++)
     {
 		nut_reg->display_segments [digit] = 0;
-		if (display->enable &&
-			((! display->blink) || (display->blink_state)))
+		if (display->enable)
 		{
 			for (segment = 0; segment <= 9; segment++)
 			{
@@ -199,16 +198,6 @@ static void voyager_display_update (nut_reg_t *nut_reg, voyager_display_reg_t *d
 						nut_reg->display_segments [digit] |= SEGMENT_ANN;
 				}
 			}
-		}
-    }
-	
-	if (display->blink)
-    {
-		display->blink_count--;
-		if (! display->blink_count)
-		{
-			display->blink_state ^= 1;
-			display->blink_count = VOYAGER_DISPLAY_BLINK_DIVISOR;
 		}
     }
 }
@@ -255,14 +244,6 @@ void voyager_display_event_fn (nut_reg_t *nut_reg, int event)
 			if (display->count == 0)
 			{
 				voyager_display_update (nut_reg, display);
-				////sim_send_display_update_to_gui (nut_reg);
-				//nut_reg->need_redraw = true;
-				
-				// patch by T.Fors to prevent flicker on iPhone
-				if (display->blink) {
-					display_callback(nut_reg);
-				}
-				////print_display(nut_reg);
 				display->count = 15;
 			}
 			else
@@ -271,10 +252,6 @@ void voyager_display_event_fn (nut_reg_t *nut_reg, int event)
 		case event_sleep:
 			// force display update
 			voyager_display_update (nut_reg, display);
-			////sim_send_display_update_to_gui (nut_reg);
-			//nut_reg->need_redraw = true;
-			display_callback(nut_reg);
-			////print_display(nut_reg);
 			display->count = 15;
 			
 			if (display->enable)
@@ -295,10 +272,6 @@ void voyager_display_event_fn (nut_reg_t *nut_reg, int event)
 		case event_restore_completed:
 			// force display update
 			voyager_display_update (nut_reg, display);
-			////sim_send_display_update_to_gui (nut_reg);
-			//nut_reg->need_redraw = true;
-			display_callback(nut_reg);
-			////print_display(nut_reg);
 			display->count = 15;
 			break;
 		default:

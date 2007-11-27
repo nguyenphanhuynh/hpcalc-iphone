@@ -176,18 +176,26 @@
     NSAutoreleasePool* p = [[NSAutoreleasePool alloc] init];
 	           
 	[NSThread setThreadPriority:0.25];
+	int n=0;
 	while (1) {
 		[NSThread sleepForTimeInterval:0.05];
 		[self performSelectorOnMainThread:@selector(readKeys) withObject:nil waitUntilDone:YES];
 		[self performSelectorOnMainThread:@selector(executeCycle) withObject:nil waitUntilDone:YES];
+			if (n++ % 2 == 0) {
+				[self performSelectorOnMainThread:@selector(updateDisplay) withObject:nil waitUntilDone:YES];
+			}
 	}
 	
 	[p release];
 }
 
+- (void) updateDisplay {
+	display_callback(nv);		
+}
+
 - (void) executeCycle {
 	int i=500;
-	while(i-- > 0) {
+	while (i-- > 0) {
 		nut_execute_instruction(nv);
 	}
 }
