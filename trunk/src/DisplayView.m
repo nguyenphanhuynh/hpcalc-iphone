@@ -317,34 +317,94 @@
 
 void display_callback(struct nut_reg_t *nv) {
 	static unsigned long last[MAX_DIGIT_POSITION];
-	BOOL update = NO;
-	
-	int i;
-	// for (i=0; i<MAX_DIGIT_POSITION; i++) {
-	// 	if (nv->display_segments[i] != 0) {
-	// 		update = YES;
-	// 	}
-	// }
-	// if (update) {
+	segment_bitmap_t display_segments [MAX_DIGIT_POSITION]; 
+	static segment_bitmap_t freeze [MAX_DIGIT_POSITION]; 
+	static BOOL blink;
+	static int blinkCount = 0;
+	BOOL update = NO; 
+	int i,j;
+
+	// get a local copy of requested display
+	for (i=0; i<MAX_DIGIT_POSITION; i++) {
+		display_segments[i] = nv->display_segments[i];
+	}
+	            
+	if (! blink && nv->display_chip->blink && nv->display_chip->enable) {
+		// turn on blinking
+		blink = YES;
+		blinkCount = 0;
+		// make a frozen copy of the display to avoid uneven blinking
+		for (i=0; i<MAX_DIGIT_POSITION; i++) {
+			freeze[i] = display_segments[i];
+		}
+	}
+	if ( blink && (!nv->display_chip->blink) && nv->display_chip->enable) {
+		// turn off blinking
+		blink = NO;
+	}
+
+	if (blink) {
+		BOOL notBlank = NO;
+		for (i=0; i<MAX_DIGIT_POSITION; i++) {
+			if (display_segments[i] != 0) {
+				notBlank = YES;
+			}
+		}
+		if ( ! notBlank) {
+			// if blank, use frozen image
+			for (i=0; i<MAX_DIGIT_POSITION; i++) {
+				display_segments[i] = freeze[i];
+			}
+		}
+		// always update when blinking for a consistent looking display
+		update = YES;
+		if (blinkCount++ > 7 ) {
+			// wrap blink counter
+			blinkCount = 0;
+		}
+		if (blinkCount > 3 ) {
+			// blank display for second half of blink cycle
+			for (i=0; i<MAX_DIGIT_POSITION; i++) {
+				display_segments[i] = 0;
+			}
+		}
+
+	} else { // not blinking
+		
+		// eliminate flicker by not updating if requested display is blank
 		update = NO;
 		for (i=0; i<MAX_DIGIT_POSITION; i++) {
-			if (nv->display_segments[i] != last[i]) {
+			if (nv->display_segments[i] != 0) {
 				update = YES;
 			}
-			last[i] = nv->display_segments[i];
 		}
-	// }
+		// always updated if display is off
+		if ( ! nv->awake) {
+			update = YES;
+		}
+	}
 	
 	if (update) {
+		// if we've been requested to update, only do it of the display has changed
+		update = NO;
+		for (i=0; i<MAX_DIGIT_POSITION; i++) {
+			if (display_segments[i] != last[i]) {
+				update = YES;
+			}
+			last[i] = display_segments[i];
+		}
+	}
+	
+	if (update) {
+		// do the display update
 		char disp[2*MAX_DIGIT_POSITION+1];
 	
-		int i, j;
 		for (j=0; j<2*MAX_DIGIT_POSITION+1; j++) {
 			disp[j] = '\x00';
 		}
 		j=0;
 		for (i=0; i<MAX_DIGIT_POSITION; i++) {
-			switch (nv->display_segments[i] & 127) {
+			switch (display_segments[i] & 127) {
 				case 64:	
 					disp[j++] = '-'; 
 					break;
@@ -394,36 +454,36 @@ void display_callback(struct nut_reg_t *nv) {
 				case 113:	disp[j++] = 'F'; break;
 				case 0:		disp[j++] = ' '; break;
 				default:	
-					NSLog(@"unknown: %d", nv->display_segments[i]);
+					NSLog(@"unknown: %d", display_segments[i]);
 					// disp[j++] = ' '; 
 					break;
 			}
-			if (nv->display_segments[i] & 256) {
+			if (display_segments[i] & 256) {
 				disp[j++] = ',';
-			} else if (nv->display_segments[i] & 128) {
+			} else if (display_segments[i] & 128) {
 				disp[j++] = '.';
 			}
 			
-			// if (nv->display_segments[i] & ~255) {
-			// 	NSLog(@"%d: %d", i, nv->display_segments[i] & ~255);
+			// if (display_segments[i] & ~255) {
+			// 	NSLog(@"%d: %d", i, display_segments[i] & ~255);
 			// }
 			
 			switch (i) {
 			case 2:
-				[(DisplayView *)nv->display showUser:((nv->display_segments[i] & ~511) != 0)];
+				[(DisplayView *)nv->display showUser:((display_segments[i] & ~511) != 0)];
 				break;
 			case 3:
-				[(DisplayView *)nv->display showFlagF:((nv->display_segments[i] & ~511) != 0)];
+				[(DisplayView *)nv->display showFlagF:((display_segments[i] & ~511) != 0)];
 				break;
 			case 4:
-				[(DisplayView *)nv->display showFlagG:((nv->display_segments[i] & ~511) != 0)];
+				[(DisplayView *)nv->display showFlagG:((display_segments[i] & ~511) != 0)];
 				break;
 			case 5:
-				[(DisplayView *)nv->display showBegin:((nv->display_segments[i] & ~511) != 0)];
+				[(DisplayView *)nv->display showBegin:((display_segments[i] & ~511) != 0)];
 				break;
 			case 7:
-				if ((nv->display_segments[7] & ~511) != 0) {
-					if ((nv->display_segments[6] & ~511) != 0) {
+				if ((display_segments[7] & ~511) != 0) {
+					if ((display_segments[6] & ~511) != 0) {
 						[(DisplayView *)nv->display setGrad];
 					} else {
 						[(DisplayView *)nv->display setRad];
@@ -433,13 +493,13 @@ void display_callback(struct nut_reg_t *nv) {
 				}
 				break;
 			case 8:
-				[(DisplayView *)nv->display showDMY:((nv->display_segments[i] & ~511) != 0)];
+				[(DisplayView *)nv->display showDMY:((display_segments[i] & ~511) != 0)];
 				break;
 			case 9:
-				[(DisplayView *)nv->display showFlagC:((nv->display_segments[i] & ~511) != 0)];
+				[(DisplayView *)nv->display showFlagC:((display_segments[i] & ~511) != 0)];
 				break;
 			case 10:
-				[(DisplayView *)nv->display showPrgm:((nv->display_segments[i] & ~511) != 0)];
+				[(DisplayView *)nv->display showPrgm:((display_segments[i] & ~511) != 0)];
 				break;
 			}
 		}
@@ -452,9 +512,9 @@ void display_callback(struct nut_reg_t *nv) {
 		// NSLog(@"[%s]", disp);
 
 		for (i=0; i<11; i++) {
-			if ((nv->display_segments[i] & 256) != 0) {
+			if ((display_segments[i] & 256) != 0) {
 				[(DisplayView *)nv->display showComma:YES position:i];
-			} else if ((nv->display_segments[i] & 384) == 128) {
+			} else if ((display_segments[i] & 384) == 128) {
 				[(DisplayView *)nv->display showDecimal:YES position:i];
 			} else {
 				[(DisplayView *)nv->display showDecimal:NO position:i];

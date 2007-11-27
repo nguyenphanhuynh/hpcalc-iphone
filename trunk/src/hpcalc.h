@@ -32,7 +32,6 @@
 	DisplayView			* _display;
 	nut_reg_t			* nv;
 	NSMutableArray  	* keyQueue;
-	NSTimeInterval  	lastRun;
 }
 
 - (void) _updateDisplay;
