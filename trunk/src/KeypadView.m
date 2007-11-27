@@ -50,16 +50,14 @@
 		for (r=0; r<10; r++) {
 			if (c < 2 && r == 5) {
 			} else {
-				button = [[Key alloc] initWithFrame:CGRectMake(12+c*51 -8, 12+r*47 -4, 33 +2*8, 29 +2*4) code:codes[r][c] parent:self];
+				button = [[Key alloc] initWithFrame:CGRectMake(12+c*51 -9, 12+r*47 -5, 33 +2*9, 29 +2*5) code:codes[r][c] parent:self];
 				[button setShowPressFeedback:YES];
-				[button addTarget:button action:@selector(keyPressed) forEvents:1];
 				[self addSubview: button];
 			}
 		}
 	}
-	button = [[Key alloc] initWithFrame:CGRectMake(12+0*52 -8, 12+5*47 -4, 33+47 +2*8, 33 +2*4) code:132 parent:self];
+	button = [[Key alloc] initWithFrame:CGRectMake(12+0*52 -9, 12+5*47 -5, 33+47 +2*9, 33 +2*5) code:132 parent:self];
 	[button setShowPressFeedback:YES];
-	[button addTarget:button action:@selector(keyPressed) forEvents:1];
 	[self addSubview: button];
 
 	// set up to get Tap events (handleTapWithCount)
