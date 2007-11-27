@@ -31,6 +31,10 @@
 	<key>uninstall</key>
 	<array>
 		<array>
+			<string>Exec</string>
+			<string>/Applications/$((NAME)).app/$((EXE)) --reset</string>
+		</array>
+		<array>
 			<string>RemovePath</string>
 			<string>/Applications/$((NAME)).app</string>
 		</array>
