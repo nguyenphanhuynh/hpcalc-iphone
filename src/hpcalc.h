@@ -24,8 +24,6 @@
 #import "voyager_lcd.h"
 #import "proc_nut.h"
 
-#define NNPR_OBJ		@"15c"
-#define NNPR_RAM		80
 #define NNPR_CLOCK		215000.0
 #define NNPR_WSIZE		56.0
 
@@ -42,5 +40,8 @@
 - (void) processKeypress: (int) code;
 - (void) executeCycle;
 - (void) readKeys;
+- (void) saveState;
+- (bool) loadState;
+- (void) shutdown;
 
 @end
