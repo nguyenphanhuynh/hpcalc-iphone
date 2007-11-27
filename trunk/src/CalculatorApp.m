@@ -39,4 +39,10 @@
 	// [self setStatusBarShowsProgress:NO];	
 }
 
+- (void) applicationWillTerminate {
+	[mainView shutdown];
+	
+	[super applicationWillTerminate];
+}              
+
 @end

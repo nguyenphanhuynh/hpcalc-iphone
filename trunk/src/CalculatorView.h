@@ -29,5 +29,6 @@
 
 - (id) initWithFrame: (CGRect) frame;
 - (void) keyPressed: (int) code;
+- (void) shutdown;
 
 @end

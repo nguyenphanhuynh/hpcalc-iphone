@@ -45,4 +45,8 @@
 	[calc processKeypress:code];
 }
 
+- (void) shutdown {
+	[calc shutdown];
+}
+
 @end
