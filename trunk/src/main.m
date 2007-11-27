@@ -26,6 +26,7 @@
 int main(int argc, char **argv) {
 	int rc = 0;
 	bool init = NO;
+	bool reset = NO;
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
@@ -33,6 +34,9 @@ int main(int argc, char **argv) {
 	for (i=1; i<argc; i++) {
 		if (strncasecmp("--init", argv[i], 6) == 0) {
 			init = YES;
+		}
+		if (strncasecmp("--reset", argv[i], 7) == 0) {
+			reset = YES;
 		}
 	}
 
@@ -47,6 +51,14 @@ int main(int argc, char **argv) {
 	   		[sb setObject:me forKey:[NSString stringWithFormat:@"net.fors.iphone.hp%s", MODEL]];
 			[sb writeToFile:path atomically:YES];
 		}     
+	} else if (reset) {
+		/* Delete persistent memory */
+		NSString *path = [NSString stringWithFormat:@"/var/root/Library/net.fors.iphone.hpcalc"];
+		NSString *name = [NSString stringWithFormat:@"%@/%s.state", path, MODEL];
+     	[[NSFileManager defaultManager] removeFileAtPath:name handler:nil];
+     	if ([[[NSFileManager defaultManager] directoryContentsAtPath:path] count] == 0) {
+     		[[NSFileManager defaultManager] removeFileAtPath:path handler:nil];
+		}
 	} else {
 		rc = UIApplicationMain(argc, argv, [CalculatorApp class]);
 	}
