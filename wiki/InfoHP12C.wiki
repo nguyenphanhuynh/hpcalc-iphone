@@ -21,7 +21,8 @@ The HP-12C is a financial programmable calculator.
 
 = User Guide =
 
-A PDF user guide for the HP-12C can downloaded from [http://h10032.www1.hp.com/ctg/Manual/c00363319.pdf HP].
+ * A PDF user guide for the HP-12C can downloaded from [http://h10032.www1.hp.com/ctg/Manual/c00363319.pdf HP].
+ * Wikipedia has an entry about [http://en.wikipedia.org/wiki/Reverse_Polish_notation RPN notation] if you're new to it.
 
 = Acknowledgements =
 
