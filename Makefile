@@ -93,6 +93,17 @@ package:
 	
 pkg: build/$(APPNAME).app	
 	tools/buildPackage.pl $(APPNAME) $(EXE)
+	
+.PHONY: moreinfo
+moreinfo:
+	$(MAKE) mi MODEL=15c
+	$(MAKE) mi MODEL=12c
+	$(MAKE) mi MODEL=11c
+	$(MAKE) mi MODEL=16c
+	
+.PHONY: mi
+mi:
+	tools/buildInfoPage.pl $(APPNAME) > ../repo/$(EXE).html
 
 publish: pkg
 	@# Don't need to copy .zip file since it will go in the files section
