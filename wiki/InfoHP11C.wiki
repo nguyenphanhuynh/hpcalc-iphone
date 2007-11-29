@@ -30,7 +30,7 @@ The HP-11C emulator for the iPhone was written and is maintained by Thomas Fors.
 
  * *Version 1.0.2* - Fixes bugs in the keypad and display.  Multi-key presses should now work.  For example, the "ON" & "." sequence for changing the digit separators now works.  Also, the "f", "PREFIX" function now properly displays the mantissa while "PREFIX" is held down.  Also fixes the display of digit separators which was broken in the last version and slightly enlarged the valid "hit" area for keys.
 
- * *Version 1.0.1* - Adds persistent memory.  When you exit HP-15C and return to the springboard, the calculator will remember its program memory and registers when it is next launched.
+ * *Version 1.0.1* - Adds persistent memory.  When you exit HP-11C and return to the springboard, the calculator will remember its program memory and registers when it is next launched.
 
  * *Version 1.0* - Initial public release.
 
