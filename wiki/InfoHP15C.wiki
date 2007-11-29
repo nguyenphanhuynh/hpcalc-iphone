@@ -40,6 +40,6 @@ The HP-15C emulator for the iPhone was written and is maintained by Thomas Fors.
 
 = License =
 
-[http://hpcalc-iphone.googlecode.com/svn/trunk/LICENSE GNU General Public License, Version 2].  Source code for this application can be found [http://hpcalc-iphone.googlecode.com/svn/trunk/ here].
+[http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, Version 2].  Source code for this application can be found [http://hpcalc-iphone.googlecode.com/svn/trunk/ here].
 
 -----end-----
