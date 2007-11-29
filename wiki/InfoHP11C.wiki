@@ -20,7 +20,8 @@ The HP-11C is a mid range scientific programmable calculator.
 
 = User Guide =
 
-A user guide for the HP-11C can be purchased from [http://www.hpmuseum.org/cd/cddesc.htm hpmuseum.com].
+ * A user guide for the HP-11C can be purchased from [http://www.hpmuseum.org/cd/cddesc.htm hpmuseum.com].
+ * Wikipedia has an entry about [http://en.wikipedia.org/wiki/Reverse_Polish_notation RPN notation] if you're new to it.
 
 = Acknowledgements =
 
