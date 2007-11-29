@@ -24,6 +24,10 @@ The HP-12C is a financial programmable calculator.
  * A PDF user guide for the HP-12C can downloaded from [http://h10032.www1.hp.com/ctg/Manual/c00363319.pdf HP].
  * Wikipedia has an entry about [http://en.wikipedia.org/wiki/Reverse_Polish_notation RPN notation] if you're new to it.
 
+= Bug Reports & Suggestions =
+
+If you find a bug or have a suggestion for improvement, please feel free to create a new [http://code.google.com/p/hpcalc-iphone/issues/list support issue].
+
 = Acknowledgements =
 
 The HP-12C emulator for the iPhone was written and is maintained by Thomas Fors.  The core emulation code was ported from the [http://homepage.mac.com/mba/nonpareil/ Mac OS X port] of [http://nonpareil.brouhaha.com/ Nonpareil].
