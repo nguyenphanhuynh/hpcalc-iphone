@@ -27,6 +27,10 @@ The HP-15C is a high end scientific programmable calculator. It can perform nume
  * A user guide for the HP-15C can be purchased from [http://www.hpmuseum.org/cd/cddesc.htm hpmuseum.com].
  * Wikipedia has an entry about [http://en.wikipedia.org/wiki/Reverse_Polish_notation RPN notation] if you're new to it.
 
+= Bug Reports & Suggestions =
+
+If you find a bug or have a suggestion for improvement, please feel free to create a new [http://code.google.com/p/hpcalc-iphone/issues/list support issue].
+
 = Acknowledgements =
 
 The HP-15C emulator for the iPhone was written and is maintained by Thomas Fors.  The core emulation code was ported from the [http://homepage.mac.com/mba/nonpareil/ Mac OS X port] of [http://nonpareil.brouhaha.com/ Nonpareil].
