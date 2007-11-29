@@ -24,7 +24,8 @@ The HP-15C is a high end scientific programmable calculator. It can perform nume
 
 = User Guide =
 
-A user guide for the HP-15C can be purchased from [http://www.hpmuseum.org/cd/cddesc.htm hpmuseum.com].
+ * A user guide for the HP-15C can be purchased from [http://www.hpmuseum.org/cd/cddesc.htm hpmuseum.com].
+ * Wikipedia has an entry about [http://en.wikipedia.org/wiki/Reverse_Polish_notation RPN notation] if you're new to it.
 
 = Acknowledgements =
 
