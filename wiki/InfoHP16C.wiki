@@ -31,6 +31,10 @@ The HP-16C is a programmer's programmable calculator.
  * A user guide for the HP-16C can be purchased from [http://www.hpmuseum.org/cd/cddesc.htm hpmuseum.com].
  * Wikipedia has an entry about [http://en.wikipedia.org/wiki/Reverse_Polish_notation RPN notation] if you're new to it.
 
+= Bug Reports & Suggestions =
+
+If you find a bug or have a suggestion for improvement, please feel free to create a new [http://code.google.com/p/hpcalc-iphone/issues/list support issue].
+
 = Acknowledgements =
 
 The HP-16C emulator for the iPhone was written and is maintained by Thomas Fors.  The core emulation code was ported from the [http://homepage.mac.com/mba/nonpareil/ Mac OS X port] of [http://nonpareil.brouhaha.com/ Nonpareil].
