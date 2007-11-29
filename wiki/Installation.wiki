@@ -13,7 +13,7 @@ The easiest method of installing is with Installer.app:
   # Tap the Sources tab at the bottom.
   # Tap the Edit button at the top.
   # Tap the Add button at the top.
-  # Enter the following url: {{{http://snipr.com/hpcalc}}}
+  # Enter the following url: {{{http://snipurl.com/hpcalc}}}
   # Click OK.
   # Go to the Install tab and scroll down to Utilities.
   # In the Utilities section, you should see HP-11C, -12C, -15C, and -16C. Select one and tap Install.
