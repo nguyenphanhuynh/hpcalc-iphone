@@ -14,6 +14,10 @@ The HP-15C is a high end scientific programmable calculator. It can perform nume
  * Numeric integration
  * Complex numbers
  * Matrix operations
+ * Hyperbolic and inverse hyperbolic trig functions
+ * Probability (combinations and permutations)
+ * Factorial, % change, and absolute value
+ * Random number generator 
  * RPN entry
  * Programmable
  * [http://www.hpmuseum.org/features/15cf.htm More...]
