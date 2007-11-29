@@ -6,6 +6,8 @@
 
 = About =
 
+The HP-15C is a high end scientific programmable. It can perform numerical integration and solve the roots of equations in addition to supporting complex numbers and matrix calculations.
+
 = User Guide =
 
 = Revision History =
