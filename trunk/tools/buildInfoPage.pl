@@ -26,10 +26,15 @@ $data =~ s/.*-----start-----\s+<\/p>//;
 $data =~ s/-----end-----.*//;
 $data =~ s/rel="nofollow"//g;
 $data =~ s/<p><img (src=".*screenshot-[0-9][0-9]c.png") \/>\s+<\/p>/<img $1 width="285" height="224" alt="Loading..."\/>/;
-print $data;
+print "$data\n";
 
 print <<'_POST_';
-</body>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-71850-9";
+urchinTracker();
+</script></body>
 </html>
 _POST_
 
