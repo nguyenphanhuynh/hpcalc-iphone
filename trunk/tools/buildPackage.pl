@@ -86,7 +86,7 @@ print FP "    <key>hash</key>\n";
 print FP "    <string>" . $hash . "</string>\n";
 
 print FP "    <key>url</key>\n";
-print FP "    <string>http://hpcalc-iphone.googlecode.com/</string>\n";
+print FP "    <string>http://hpcalc-iphone.googlecode.com/svn/repo/${exe}.html</string>\n";
 
 $desc = `cat description.$exe`;
 $desc =~ s/[\r\n]/ /g;
