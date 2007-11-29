@@ -8,8 +8,34 @@
 
 The HP-15C is a high end scientific programmable. It can perform numerical integration and solve the roots of equations in addition to supporting complex numbers and matrix calculations.
 
+= Features =
+
+ * Root finder
+ * Numeric integration
+ * Complex numbers
+ * Matrix operations
+ * RPN entry
+ * Programmable
+ * [http://www.hpmuseum.org/features/15cf.htm More...]
+
 = User Guide =
 
+A user guide for the HP-15C can be purchased from [http://www.hpmuseum.org/cd/cddesc.htm hpmuseum.com].
+
+= Acknowledgements =
+
+The HP-15C emulator for the iPhone was written and is maintained by Thomas Fors.  The core emulation code was ported from the [http://homepage.mac.com/mba/nonpareil/ Mac OS X port] of [http://nonpareil.brouhaha.com/ Nonpareil].
+
 = Revision History =
+
+ * *Version 1.0.4* - Fixes bugs in the keypad and display.  Multi-key presses should now work.  For example, the "ON" & "." sequence for changing the digit separators now works.  Also, the "f", "PREFIX" function now properly displays the mantissa while "PREFIX" is held down.  Also fixes the display of digit separators which was broken in the last version and slightly enlarged the valid "hit" area for keys.
+
+ * *Version 1.0.3* - Adds persistent memory.  When you exit HP-15C and return to the springboard, the calculator will remember its program memory and registers when it is next launched.
+
+ * *Version 1.0.2* - Corrected a typo on the keypad legend.  "Px,y" was changed to "Py,x" and "Cx,y" was changed to "Cy,x" to match the real calculator keypad.
+
+ * *Version 1.0.1* - Cleaned up the annunciator display (e.g. "f", "g", "PRGM", etc.)
+
+ * *Version 1.0* - Initial public release.
 
 -----end-----
