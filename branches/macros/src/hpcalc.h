@@ -32,11 +32,13 @@
 	DisplayView			* _display;
 	nut_reg_t			* nv;
 	NSMutableArray  	* keyQueue;
+	bool				_macroInProgress;
 }
 
 - (void) _updateDisplay;
 - (id) initWithDisplay: (DisplayView *) dv;
 - (void) processKeypress: (int) code;
+- (void) playMacro: (NSArray *) macro;
 - (void) executeCycle;
 - (void) readKeys;
 - (void) saveState;

@@ -172,6 +172,17 @@
 	[keyQueue insertObject:[NSNumber numberWithInt:code] atIndex:0];
 }
 
+- (void) playMacro: (NSArray *) macro {
+	NSEnumerator *enumerator = [macro objectEnumerator];
+	id keystroke;
+
+	[_display pauseDisplay:YES];
+	while (keystroke = [enumerator nextObject]) {
+		[self processKeypress:[keystroke intValue]];
+	}
+	_macroInProgress = true;
+}
+
 - (void) tick {
     NSAutoreleasePool* p = [[NSAutoreleasePool alloc] init];
 	           
@@ -181,9 +192,9 @@
 		[NSThread sleepForTimeInterval:0.05];
 		[self performSelectorOnMainThread:@selector(readKeys) withObject:nil waitUntilDone:YES];
 		[self performSelectorOnMainThread:@selector(executeCycle) withObject:nil waitUntilDone:YES];
-			if (n++ % 2 == 0) {
-				[self performSelectorOnMainThread:@selector(updateDisplay) withObject:nil waitUntilDone:YES];
-			}
+		if (n++ % 2 == 0) {
+			[self performSelectorOnMainThread:@selector(updateDisplay) withObject:nil waitUntilDone:YES];
+		}
 	}
 	
 	[p release];
@@ -203,6 +214,11 @@
 - (void) readKeys {
 	static int delay = 0;
 	int key;
+	
+	if ([keyQueue count] == 0 && _macroInProgress) {
+		[_display pauseDisplay:NO];
+		_macroInProgress = false;
+	}
 	        
 	if (delay) {
 		delay--;
@@ -225,7 +241,7 @@
 					} else {
 						nut_release_key(nv);
 					}
-					delay = 2;
+					delay = 1;
 				}
 			}
 		}
