@@ -16,13 +16,14 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 MODEL=15c
-APPNAME=HP-$(subst c,C,$(MODEL))
+UCMODEL=$(subst c,C,$(MODEL))
+APPNAME=HP-$(UCMODEL)
 EXE=hp$(MODEL)
 
 CC = /usr/local/bin/arm-apple-darwin-gcc
 LD = $(CC)
 CFLAGS += -I/Developer/SDKs/iPhone/include
-CFLAGS += -DMODEL='"$(MODEL)"'
+CFLAGS += -DHP$(UCMODEL)
 LDFLAGS = -isystem $(HEAVENLY) \
           -lobjc -lc \
           -framework CoreFoundation \
@@ -40,11 +41,11 @@ NONPAREIL = build/proc_nut.o \
 			build/voyager_lcd.o
 
 OBJS = build/main-$(MODEL).o \
-       build/CalculatorApp.o \
-       build/CalculatorView.o \
-       build/KeypadView.o \
-       build/DisplayView.o \
-       build/Key.o \
+       build/CalculatorApp-$(MODEL).o \
+       build/CalculatorView-$(MODEL).o \
+       build/KeypadView-$(MODEL).o \
+       build/DisplayView-$(MODEL).o \
+       build/Key-$(MODEL).o \
 	   build/hpcalc-$(MODEL).o \
 	   $(NONPAREIL)
 
@@ -69,6 +70,8 @@ IMGS = img/Default-$(MODEL).png \
 	
 BUNDLE = build/$(EXE) src/$(MODEL).obj $(IMGS)
 
+.PHONY: app
+app: build/$(APPNAME).app
 
 .PHONY: all
 all:
@@ -77,8 +80,12 @@ all:
 	$(MAKE) app MODEL=11c
 	$(MAKE) app MODEL=16c
 	
-.PHONY: app
-app: build/$(APPNAME).app
+.PHONY: uploadall
+uploadall:
+	$(MAKE) upload MODEL=15c
+	$(MAKE) upload MODEL=12c
+	$(MAKE) upload MODEL=11c
+	$(MAKE) upload MODEL=16c
 
 .PHONY: upload
 upload: build/$(APPNAME).app
@@ -155,11 +162,8 @@ build/$(APPNAME).app: $(BUNDLE) build/Info-$(MODEL).plist
 build/$(EXE): $(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^
 
-build/hpcalc-$(MODEL).o: src/hpcalc.m
-	$(CC) $(CFLAGS) -DAPPNAME='"$(APPNAME)"' -c $(CPPFLAGS) $< -o $@
-
-build/main-$(MODEL).o: src/main.m
-	$(CC) $(CFLAGS) -DAPPNAME='"$(APPNAME)"' -c $(CPPFLAGS) $< -o $@
+build/%-$(MODEL).o: src/%.m
+	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@
 
 build/%.o: src/%.m
 	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@
