@@ -31,12 +31,12 @@
 	
 	_display = dv;
 		
-	if (strcmp(MODEL, "15c") == 0) {
-		nv = nut_new_processor(80, (void *)dv);
-	} else {
-		nv = nut_new_processor(40, (void *)dv);
-	}
-	
+#ifdef HP15C           
+	nv = nut_new_processor(80, (void *)dv);
+#else  
+	nv = nut_new_processor(40, (void *)dv);
+#endif	
+
 	NSString *objFile = [NSString stringWithFormat:@"/Applications/%s.app/%s.obj", APPNAME, MODEL];
 	nut_read_object_file(nv, [objFile cString]);
 	
