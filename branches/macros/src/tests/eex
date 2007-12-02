@@ -1,0 +1,4 @@
+<test>
+	<rpn> 6 . 6 2 6 2 EEX 3 4 </rpn>
+	<result> 6.6262   34 </result>
+</test>

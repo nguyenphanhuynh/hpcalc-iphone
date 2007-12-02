@@ -33,16 +33,25 @@
 	nut_reg_t			* nv;
 	NSMutableArray  	* keyQueue;
 	bool				_macroInProgress;
+	unsigned long long	_cycles;
+	bool				_displayPaused;
+	NSDictionary		* _keystrokeDictionary;
 }
 
-- (void) _updateDisplay;
+- (void) updateDisplay;
+- (id) getDisplayString;
+- (unsigned long long) cpuCycles;
 - (id) initWithDisplay: (DisplayView *) dv;
 - (void) processKeypress: (int) code;
 - (void) playMacro: (NSArray *) macro;
+- (void) computeMacro: (NSArray *) macro;
+- (void) computeFromCString: (char *) macro;
+- (bool) keyBufferIsEmpty;
 - (void) executeCycle;
 - (void) readKeys;
 - (void) saveState;
 - (bool) loadState;
 - (void) shutdown;
+- (void) initKeystrokeDict;
 
 @end

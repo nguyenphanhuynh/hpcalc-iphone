@@ -24,6 +24,7 @@ CC = /usr/local/bin/arm-apple-darwin-gcc
 LD = $(CC)
 CFLAGS += -I/Developer/SDKs/iPhone/include
 CFLAGS += -DHP$(UCMODEL)
+CFLAGS += -O3
 LDFLAGS = -isystem $(HEAVENLY) \
           -lobjc -lc \
           -framework CoreFoundation \
@@ -69,6 +70,8 @@ IMGS = img/Default-$(MODEL).png \
        img/icon-$(MODEL).png
 	
 BUNDLE = build/$(EXE) src/$(MODEL).obj $(IMGS)
+
+TESTS = $(subst tests,tests/$(EXE),$(subst src,build,$(wildcard src/tests/*)))
 
 .PHONY: app
 app: build/$(APPNAME).app
@@ -170,7 +173,37 @@ build/%.o: src/%.m
 
 build/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@
+	
+.PHONY: checkall
+checkall:
+	$(MAKE) check MODEL=15c
+	$(MAKE) check MODEL=12c
+	$(MAKE) check MODEL=11c
+	$(MAKE) check MODEL=16c
 
+.PHONY: check	
+check: testprep $(TESTS)
+	@echo $(EXE) Passed all tests.
+	
+.PHONY: testprep
+testprep:
+	@echo Preparing $(EXE) for tests...
+	@if test $(MODEL) = "11c"; then \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "FIX 9"' > /dev/null; \
+	fi
+	@if test $(MODEL) = "12c"; then \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "f 9"' > /dev/null; \
+	fi
+	@if test $(MODEL) = "15c"; then \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "FIX 9"' > /dev/null; \
+	fi
+	@if test $(MODEL) = "16c"; then \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "FLOAT 9"' > /dev/null; \
+	fi
+	
+build/tests/$(EXE)/%: src/tests/% build/$(APPNAME).app/$(EXE)
+	@tools/testHarness.pl $(APPNAME) $(EXE) $(IPHONEIP) $<
+	
 .PHONY: clean
 clean:
 	rm -rf build/HP-*.app build/*

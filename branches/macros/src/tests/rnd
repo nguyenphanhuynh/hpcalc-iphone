@@ -1,0 +1,10 @@
+<test>
+	<models> 11c 15c </models>
+	<rpn> FIX 4 1 . 2 3 4 5 6 7 8 9 RND FIX 9 </rpn>
+	<result> 1.234600000 </result>
+</test>
+<test>
+	<models> 12c </models>
+	<rpn> f 4 1 . 2 3 4 5 6 7 8 9 RND f 9 </rpn>
+	<result> 1.234600000 </result>
+</test>

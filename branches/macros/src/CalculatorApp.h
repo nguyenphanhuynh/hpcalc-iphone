@@ -30,6 +30,8 @@
 #import <Celestial/AVController.h>
 #import <Celestial/AVItem.h>
 
+#include "keymacros.h"
+
 #include <math.h>
 
 #ifdef HP15C		

@@ -1,0 +1,5 @@
+<test>
+	<models> 11c 15c 16c </models>
+	<rpn> 1 2 3 . 4 5 6 7 CHS ABS </rpn>
+	<result> 123.4567000 </result>
+</test>
