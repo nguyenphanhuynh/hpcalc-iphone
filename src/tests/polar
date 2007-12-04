@@ -1,0 +1,10 @@
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 5 ENTER 10 TOP + </rpn>
+	<result> 37.74539107 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 30 ENTER 12 TOR + </rpn>
+	<result> 16.39230485 </result>
+</test>

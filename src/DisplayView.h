@@ -25,9 +25,12 @@
 	UIImageView		* grad, * rad;
 	UIImageView		* user, * prgm;
 	UIImageView		* begin, * dmy;
+	bool			pause;
 }
 
 - (void) displayString: (NSString *) str;
+- (void) pauseDisplay:(bool) p;
+- (bool) displayPaused;
 - (void) showFlagF: (BOOL) visible;
 - (void) showFlagG: (BOOL) visible;
 - (void) showFlagC: (BOOL) visible;

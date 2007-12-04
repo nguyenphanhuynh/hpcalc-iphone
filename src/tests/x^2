@@ -1,0 +1,5 @@
+<test>
+	<models> 11c 15c </models>
+	<rpn> 1 2 . 3 X^2 </rpn>
+	<result> 151.2900000 </result>
+</test>

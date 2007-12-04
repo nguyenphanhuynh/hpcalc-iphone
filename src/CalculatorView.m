@@ -20,6 +20,7 @@
 #import "CalculatorView.h"
 #import "KeypadView.h"
 #import "DisplayView.h"
+#import "MenuView.h"
 #import "hpcalc.h"
 
 @implementation CalculatorView
@@ -27,26 +28,39 @@
 - (id) initWithFrame: (CGRect) frame {
 	self = [super initWithFrame: frame];
 	
-	keypad = [[KeypadView alloc] initWithFrame: frame parent:self];
-	[self addSubview: keypad];
-
 	frame.origin.x += 211;
 	frame.size.width -= 211;
 	display = [[DisplayView alloc] initWithFrame: frame];
 	[self addSubview: display];
-	
+
+	frame.origin.x -= 211;
+	frame.size.width += 211;
+	keypad = [[KeypadView alloc] initWithFrame: frame parent:self];
+	[self addSubview: keypad];
+
 	calc = [[HPCalc alloc] initWithDisplay:display];
-	[calc _updateDisplay];
 	
 	return self;
 }
 
 - (void) keyPressed: (int) code {
-	[calc processKeypress:code];
+	if (code == -100) {
+		[_menuView processKeypress:0];
+	} else {
+		[calc processKeypress:code];
+	}
+}
+
+- (void) playMacro:(NSString *) macro {
+	[calc computeFromString:macro];
 }
 
 - (void) shutdown {
 	[calc shutdown];
+}
+
+- (void) setMenuView:(MenuView *) v {
+	_menuView = v;
 }
 
 @end

@@ -106,8 +106,18 @@
 	// set up to get Tap events (handleTapWithCount)
 	[self setTapDelegate: self];
 	
+	pause = NO;
+	
 	return self;
 } 
+
+- (void) pauseDisplay:(bool) p {
+	pause = p;
+}
+
+- (bool) displayPaused {
+	return pause;
+}
 
 - (void) displayString: (NSString *) str {
 	int p = 10;
@@ -342,6 +352,29 @@ void display_callback(struct nut_reg_t *nv) {
 		// turn off blinking
 		blink = NO;
 	}
+	
+	// if display is paused, indicate macro running
+	if ([(DisplayView *)nv->display displayPaused]) {
+		blink = YES;
+		for (i=0; i<MAX_DIGIT_POSITION; i++) {
+			display_segments[0] = 0;
+			display_segments[1] = 0;
+			display_segments[2] = 33;
+			display_segments[3] = 98;
+			display_segments[4] = 35;
+			display_segments[5] = 35;
+			display_segments[6] = 2;
+			display_segments[7] = 35;
+			display_segments[8] = 111;
+			display_segments[9] = 0;
+			display_segments[10] = 0;
+			display_segments[11] = 0;
+			display_segments[12] = 0;
+			display_segments[13] = 0;
+			display_segments[14] = 0;
+		}
+	}
+	
 
 	if (blink) {
 		BOOL notBlank = NO;
@@ -383,7 +416,7 @@ void display_callback(struct nut_reg_t *nv) {
 			update = YES;
 		}
 	}
-	
+	                                              	
 	if (update) {
 		// if we've been requested to update, only do it of the display has changed
 		update = NO;

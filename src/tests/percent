@@ -1,0 +1,10 @@
+<test>
+	<models> 11c 12c 15c </models>
+	<rpn> 1 5 . 7 6 ENTER 3 % </rpn>
+	<result> 0.472800000 </result>
+</test>
+<test>
+	<models> 11c 12c 15c </models>
+	<rpn> 1 5 . 7 6 ENTER 1 4 . 1 2 delta% </rpn>
+	<result> -10.40609137 </result>
+</test>

@@ -18,8 +18,14 @@
 
 #import "CalculatorApp.h"
 #import "CalculatorView.h"
+#import "MenuView.h"
 
 @implementation CalculatorApp
+
+// - (BOOL)respondsToSelector:(SEL)aSelector {
+// 	NSLog(@"%@", NSStringFromSelector(aSelector));
+// 	return [super respondsToSelector:aSelector];
+// }	
 
 - (void) applicationDidFinishLaunching: (id) fp8 {
 	// init main window for the application to be the whole screen.
@@ -27,12 +33,18 @@
 
 	mainWindow = [[UIWindow alloc] initWithContentRect: frame];
 
-	mainView = [[CalculatorView alloc] initWithFrame: frame];
+	calcView = [[CalculatorView alloc] initWithFrame: frame];
+	menuView = [[MenuView alloc] initWithFrame: frame];
+	[menuView setEnabled:NO];
+	[calcView addSubview: menuView];
+	
+	[calcView setMenuView:menuView];
+	[menuView setCalcView:calcView];
 
 	[mainWindow orderFront: self];
     [mainWindow makeKey: self];
 	[mainWindow _setHidden: NO];	
-	[mainWindow setContentView: mainView]; 
+	[mainWindow setContentView: calcView]; 
 
 	/* show landscape status bar */
 	[self setStatusBarMode:3 orientation:90 duration:0];
@@ -40,7 +52,7 @@
 }
 
 - (void) applicationWillTerminate {
-	[mainView shutdown];
+	[calcView shutdown];
 	
 	[super applicationWillTerminate];
 }              
