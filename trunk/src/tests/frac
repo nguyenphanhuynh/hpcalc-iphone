@@ -1,0 +1,5 @@
+<test>
+	<models> 11c 12c 15c </models>
+	<rpn> 1 2 3 . 4 5 6 7 FRAC </rpn>
+	<result> 0.456700000 </result>
+</test>

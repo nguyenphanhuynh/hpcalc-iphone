@@ -16,13 +16,15 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 MODEL=15c
-APPNAME=HP-$(subst c,C,$(MODEL))
+UCMODEL=$(subst c,C,$(MODEL))
+APPNAME=HP-$(UCMODEL)
 EXE=hp$(MODEL)
 
 CC = /usr/local/bin/arm-apple-darwin-gcc
 LD = $(CC)
 CFLAGS += -I/Developer/SDKs/iPhone/include
-CFLAGS += -DMODEL='"$(MODEL)"'
+CFLAGS += -DHP$(UCMODEL)
+CFLAGS += -O3
 LDFLAGS = -isystem $(HEAVENLY) \
           -lobjc -lc \
           -framework CoreFoundation \
@@ -32,6 +34,7 @@ LDFLAGS = -isystem $(HEAVENLY) \
           -framework CoreGraphics \
           -framework GraphicsServices \
           -framework WebCore \
+		  -framework AudioToolbox \
 		  -framework Celestial
 
 NONPAREIL = build/proc_nut.o \
@@ -40,11 +43,14 @@ NONPAREIL = build/proc_nut.o \
 			build/voyager_lcd.o
 
 OBJS = build/main-$(MODEL).o \
-       build/CalculatorApp.o \
-       build/CalculatorView.o \
-       build/KeypadView.o \
-       build/DisplayView.o \
-       build/Key.o \
+       build/CalculatorApp-$(MODEL).o \
+       build/CalculatorView-$(MODEL).o \
+       build/KeypadView-$(MODEL).o \
+       build/DisplayView-$(MODEL).o \
+	   build/MenuView-$(MODEL).o \
+	   build/MenuAlert-$(MODEL).o \
+	   build/MenuButton-$(MODEL).o \
+       build/Key-$(MODEL).o \
 	   build/hpcalc-$(MODEL).o \
 	   $(NONPAREIL)
 
@@ -65,10 +71,16 @@ IMGS = img/Default-$(MODEL).png \
 	   img/i.png img/P.png\
 	   img/user.png img/prgm.png \
 	   img/begin.png img/dmy.png \
+	   img/alertbg.png img/alertbutton.png img/alertbuttonpressed.png \
+	   src/menu.plist \
        img/icon-$(MODEL).png
 	
 BUNDLE = build/$(EXE) src/$(MODEL).obj $(IMGS)
 
+TESTS = $(subst tests,tests/$(EXE),$(subst src,build,$(wildcard src/tests/*)))
+
+.PHONY: app
+app: build/$(APPNAME).app
 
 .PHONY: all
 all:
@@ -77,8 +89,12 @@ all:
 	$(MAKE) app MODEL=11c
 	$(MAKE) app MODEL=16c
 	
-.PHONY: app
-app: build/$(APPNAME).app
+.PHONY: uploadall
+uploadall:
+	$(MAKE) upload MODEL=15c
+	$(MAKE) upload MODEL=12c
+	$(MAKE) upload MODEL=11c
+	$(MAKE) upload MODEL=16c
 
 .PHONY: upload
 upload: build/$(APPNAME).app
@@ -155,18 +171,45 @@ build/$(APPNAME).app: $(BUNDLE) build/Info-$(MODEL).plist
 build/$(EXE): $(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^
 
-build/hpcalc-$(MODEL).o: src/hpcalc.m
-	$(CC) $(CFLAGS) -DAPPNAME='"$(APPNAME)"' -c $(CPPFLAGS) $< -o $@
-
-build/main-$(MODEL).o: src/main.m
-	$(CC) $(CFLAGS) -DAPPNAME='"$(APPNAME)"' -c $(CPPFLAGS) $< -o $@
+build/%-$(MODEL).o: src/%.m
+	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@
 
 build/%.o: src/%.m
 	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@
 
 build/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@
+	
+.PHONY: checkall
+checkall:
+	$(MAKE) check MODEL=15c
+	$(MAKE) check MODEL=12c
+	$(MAKE) check MODEL=11c
+	$(MAKE) check MODEL=16c
 
+.PHONY: check	
+check: testprep $(TESTS)
+	@echo $(EXE) Passed all tests.
+	
+.PHONY: testprep
+testprep:
+	@echo Preparing $(EXE) for tests...
+	@if test $(MODEL) = "11c"; then \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "FIX 9"' > /dev/null; \
+	fi
+	@if test $(MODEL) = "12c"; then \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "f 9"' > /dev/null; \
+	fi
+	@if test $(MODEL) = "15c"; then \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "FIX 9"' > /dev/null; \
+	fi
+	@if test $(MODEL) = "16c"; then \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "FLOAT 9"' > /dev/null; \
+	fi
+	
+build/tests/$(EXE)/%: src/tests/% build/$(APPNAME).app/$(EXE)
+	@tools/testHarness.pl $(APPNAME) $(EXE) $(IPHONEIP) $<
+	
 .PHONY: clean
 clean:
 	rm -rf build/HP-*.app build/*
