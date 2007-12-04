@@ -17,27 +17,10 @@
  */
 
 #import "CalculatorApp.h"
-#import "KeypadView.h"
-#import "Key.h"
 
-@implementation Key
-
-- (id) initWithFrame: (CGRect) frame code: (int) code parent: (KeypadView *) p {
-	self = [super initWithFrame: frame];
-	_code = code;
-	_keypad = p;
-	return self;
-}   
-
-- (void)mouseDown:(struct __GSEvent *)event {
-	// AudioServicesPlaySystemSound(1105);
-	[_keypad keyPressed:_code];
-	[super mouseDown:event];
+@interface MenuAlert : UIAlertSheet {
 }
 
-- (void)mouseUp:(struct __GSEvent *)event {
-	[_keypad keyPressed:-1];
-	[super mouseUp:event];
-}
+- (id)initWithFrame:(struct CGRect)frame buttons:(id)buttons title:(NSString *)title delegate:(id)delegate;
 
 @end

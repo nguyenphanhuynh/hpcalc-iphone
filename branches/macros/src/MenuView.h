@@ -17,27 +17,27 @@
  */
 
 #import "CalculatorApp.h"
-#import "KeypadView.h"
-#import "Key.h"
+#import "MenuButton.h"
 
-@implementation Key
+@class MenuAlert;
 
-- (id) initWithFrame: (CGRect) frame code: (int) code parent: (KeypadView *) p {
-	self = [super initWithFrame: frame];
-	_code = code;
-	_keypad = p;
-	return self;
-}   
-
-- (void)mouseDown:(struct __GSEvent *)event {
-	// AudioServicesPlaySystemSound(1105);
-	[_keypad keyPressed:_code];
-	[super mouseDown:event];
+@interface MenuView : UIView {
+	MenuAlert				* _alert;
+	CalculatorView			* _calcView;
+	NSMutableArray			* _menuStack;
+	NSMutableDictionary		* _menuData;
+	NSMutableArray			* _tagList;
 }
 
-- (void)mouseUp:(struct __GSEvent *)event {
-	[_keypad keyPressed:-1];
-	[super mouseUp:event];
-}
+- (void) setCalcView:(CalculatorView *) v;
+- (void) processKeypress: (int) code;
+
+- (int) _nameToTag:(NSString *) name;
+- (NSString *) _tagToName:(int) tag;
+- (MenuButton *) _buttonWithTag:(int) tag;
+- (MenuButton *) _buttonWithName:(NSString *) name;
+- (bool) _isMenu:(int) tag;
+- (bool) _isMacro:(int) tag;
+- (void) _playMacro:(id)tag;
 
 @end

@@ -45,7 +45,7 @@
 - (void) processKeypress: (int) code;
 - (void) playMacro: (NSArray *) macro;
 - (void) computeMacro: (NSArray *) macro;
-- (void) computeFromCString: (char *) macro;
+- (void) computeFromString:(NSString *) str;
 - (bool) keyBufferIsEmpty;
 - (void) executeCycle;
 - (void) readKeys;

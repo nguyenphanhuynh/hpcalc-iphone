@@ -60,6 +60,15 @@
 	[button setShowPressFeedback:YES];
 	[self addSubview: button];
 
+	// Setup logo button
+#ifndef HP12C	
+#ifndef HP16C	
+	button = [[Key alloc] initWithFrame:CGRectMake(211+31, 436, 36, 35) code:-100 parent:self];
+	[button setShowPressFeedback:YES];
+	[self addSubview: button];
+#endif	
+#endif	
+
 	// set up to get Tap events (handleTapWithCount)
 	[self setTapDelegate: self];
 	

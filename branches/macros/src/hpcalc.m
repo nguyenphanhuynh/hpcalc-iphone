@@ -234,20 +234,19 @@
 	// NSLog(@" + %@", [self getDisplayString]);
 }
 
-- (void) computeFromCString: (char *) macro {
+- (void) computeFromString:(NSString *) str {
 	int i;
 	NSMutableArray *keystrokes = [[NSMutableArray alloc] init];
 	unsigned long long waitCycles = 500;
 
-	for (i=0; i<strlen(macro); i++) {
-		macro[i] = tolower(macro[i]);
-	}
+	NSArray *tokens = [[str lowercaseString] componentsSeparatedByString:@" "];
 	
-	char *token = strtok(macro, " ");
-	while (token != NULL) {
+	NSEnumerator *enumerator = [tokens objectEnumerator];
+	id token;
+	while (token = [enumerator nextObject]) {
 		bool isNumeric = YES;
-		for (i=0; i<strlen(token); i++) {
-			switch (token[i]) {
+		for (i=0; i<[token length]; i++) {
+			switch ([token characterAtIndex:i]) {
 				case '0':
 				case '1':
 				case '2':
@@ -267,17 +266,21 @@
 					break;
 			}
 		}
-		
-		if (strlen(token) == 1)
+
+		if ([token length] == 1)
 			isNumeric = NO;
 		
 		if (isNumeric) {
+			// terminate digit entry
+			[keystrokes addObjectsFromArray:[_keystrokeDictionary objectForKey:@"x<>y"]];
+			[keystrokes addObjectsFromArray:[_keystrokeDictionary objectForKey:@"x<>y"]];
+			
 			bool neg = NO;
 			int mantissaLen = 0;
 			int expLen = 0;
 			bool inExp = NO;
-			for (i=0; i<strlen(token); i++) {
-				switch (token[i]) {
+			for (i=0; i<[token length]; i++) {
+				switch ([token characterAtIndex:i]) {
 					case '0':
 					case '1':
 					case '2':
@@ -288,7 +291,7 @@
 					case '7':
 					case '8':
 					case '9':
-						[keystrokes addObjectsFromArray:[_keystrokeDictionary objectForKey:[NSString stringWithFormat:@"%c", token[i]]]];
+						[keystrokes addObjectsFromArray:[_keystrokeDictionary objectForKey:[NSString stringWithFormat:@"%c", [token characterAtIndex:i]]]];
 						if (!inExp) mantissaLen++; else expLen++;
 						break;
 					case '-':
@@ -314,23 +317,26 @@
 			if (neg) {
 				[keystrokes addObjectsFromArray:[_keystrokeDictionary objectForKey:@"chs"]];
 			}
+			
 			// terminate digit entry
 			[keystrokes addObjectsFromArray:[_keystrokeDictionary objectForKey:@"x<>y"]];
 			[keystrokes addObjectsFromArray:[_keystrokeDictionary objectForKey:@"x<>y"]];
 		} else {
-			if (strcmp(token, "wait") == 0) {
+			if ([token isEqualToString:@"wait"]) {
 				[NSThread sleepForTimeInterval:1.0];
 			} else {
-				[keystrokes addObjectsFromArray:[_keystrokeDictionary objectForKey:[NSString stringWithCString:token encoding:NSASCIIStringEncoding]]];
-				// NSLog(@"%@", keystrokes);
+				[keystrokes addObjectsFromArray:[_keystrokeDictionary objectForKey:token]];
 				[self computeMacro:keystrokes];
 				[keystrokes removeAllObjects];
 			}
 		}
-		
-		token = strtok(NULL, " ");
 	}
 
+	if ([keystrokes count]) {
+		[self computeMacro:keystrokes];
+		[keystrokes removeAllObjects];
+	}
+	
 	unsigned long long cycles = [self cpuCycles];
 	while ( [self cpuCycles] - cycles < waitCycles ) {
 		// wait for final display update to complete
@@ -787,7 +793,7 @@
 	[kd setObject:[NSArray arrayWithObjects:K_FLOAT, nil] forKey:@"float"];
 #endif
 	
-	_keystrokeDictionary = [NSDictionary dictionaryWithDictionary:kd];
+	_keystrokeDictionary = [[NSDictionary dictionaryWithDictionary:kd] retain];
 }
 
 @end

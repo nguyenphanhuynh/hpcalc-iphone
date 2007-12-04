@@ -34,6 +34,7 @@ LDFLAGS = -isystem $(HEAVENLY) \
           -framework CoreGraphics \
           -framework GraphicsServices \
           -framework WebCore \
+		  -framework AudioToolbox \
 		  -framework Celestial
 
 NONPAREIL = build/proc_nut.o \
@@ -46,6 +47,9 @@ OBJS = build/main-$(MODEL).o \
        build/CalculatorView-$(MODEL).o \
        build/KeypadView-$(MODEL).o \
        build/DisplayView-$(MODEL).o \
+	   build/MenuView-$(MODEL).o \
+	   build/MenuAlert-$(MODEL).o \
+	   build/MenuButton-$(MODEL).o \
        build/Key-$(MODEL).o \
 	   build/hpcalc-$(MODEL).o \
 	   $(NONPAREIL)
@@ -67,6 +71,8 @@ IMGS = img/Default-$(MODEL).png \
 	   img/i.png img/P.png\
 	   img/user.png img/prgm.png \
 	   img/begin.png img/dmy.png \
+	   img/alertbg.png img/alertbutton.png img/alertbuttonpressed.png \
+	   src/menu.plist \
        img/icon-$(MODEL).png
 	
 BUNDLE = build/$(EXE) src/$(MODEL).obj $(IMGS)

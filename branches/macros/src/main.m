@@ -84,7 +84,7 @@ int main(int argc, char **argv) {
 		for (i=1; i<argc; i++) {
 			if (strncasecmp("--", argv[i], 2) != 0) {
 				// if it's not a command line switch
-				[calc computeFromCString:argv[i]];
+				[calc computeFromString:[NSString stringWithCString:argv[i]]];
 			}
 			
 		}

@@ -25,10 +25,13 @@
 	KeypadView		* keypad;
 	DisplayView		* display;
 	HPCalc			* calc;
+	MenuView		* _menuView;
 }
 
 - (id) initWithFrame: (CGRect) frame;
 - (void) keyPressed: (int) code;
+- (void) playMacro:(NSString *) macro;
 - (void) shutdown;
+- (void) setMenuView:(MenuView *) v;
 
 @end
