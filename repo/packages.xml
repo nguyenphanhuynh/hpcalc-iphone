@@ -22,23 +22,23 @@
     <key>name</key>
     <string>HP-15C</string>
     <key>version</key>
-    <string>1.0.4</string>
+    <string>1.0.5</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.4.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.5.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>203827</string>
+    <string>237649</string>
     <key>date</key>
-    <string>1196207567</string>
+    <string>1196755844</string>
     <key>hash</key>
-    <string>4afe392b4b5074478ed6230ce362e109</string>
+    <string>6bbc78743b401c8136d51d6a31c23ec6</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp15c.html</string>
     <key>description</key>
-    <string>HP-15C advanced scientific programmable calculator emulator. v1.0.4 fixes keypad and display issues. </string>
+    <string>HP-15C advanced scientific programmable calculator emulator. See More Info for changes. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
@@ -158,23 +158,23 @@
     <key>name</key>
     <string>HP-11C</string>
     <key>version</key>
-    <string>1.0.2</string>
+    <string>1.0.3</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp11c-1.0.2.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp11c-1.0.3.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>178794</string>
+    <string>211824</string>
     <key>date</key>
-    <string>1196207562</string>
+    <string>1196755848</string>
     <key>hash</key>
-    <string>16273c20f8cdfe5fb2f50359bd514638</string>
+    <string>197d4442443c866b9fb13635e7783635</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp11c.html</string>
     <key>description</key>
-    <string>HP-11C scientific programmable calculator emulator. v1.0.2 fixes keypad and display issues. </string>
+    <string>HP-11C scientific programmable calculator emulator. See More Info for changes. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
