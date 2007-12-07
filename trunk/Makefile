@@ -195,16 +195,16 @@ check: testprep $(TESTS)
 testprep:
 	@echo Preparing $(EXE) for tests...
 	@if test $(MODEL) = "11c"; then \
-		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "FIX 9"' > /dev/null; \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) --nogui "FIX 9"' > /dev/null; \
 	fi
 	@if test $(MODEL) = "12c"; then \
-		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "f 9"' > /dev/null; \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) --nogui "f 9"' > /dev/null; \
 	fi
 	@if test $(MODEL) = "15c"; then \
-		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "FIX 9"' > /dev/null; \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) --nogui "FIX 9"' > /dev/null; \
 	fi
 	@if test $(MODEL) = "16c"; then \
-		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) "FLOAT 9"' > /dev/null; \
+		ssh $(IPHONEIP) '/Applications/$(APPNAME).app/$(EXE) --nogui "FLOAT 9"' > /dev/null; \
 	fi
 	
 build/tests/$(EXE)/%: src/tests/% build/$(APPNAME).app/$(EXE)

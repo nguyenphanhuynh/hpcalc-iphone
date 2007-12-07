@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
 	int rc = 0;
 	bool init = NO;
 	bool reset = NO;
-	bool gui = NO;
+	bool nogui = NO;
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
@@ -38,22 +38,31 @@ int main(int argc, char **argv) {
 			init = YES;
 		} else if (strncasecmp("--reset", argv[i], 7) == 0) {
 			reset = YES;
-		} else if (strncasecmp("--launchedfromsb", argv[i], 16) == 0) {
-			gui = YES;
+		} else if (strncasecmp("--nogui", argv[i], 16) == 0) {
+			nogui = YES;
 		}
 	}
 
+	/* Set springboard to hide status bar on launch 
+	 * 
+	 * This code was moved out of the (init) case below so people that install it
+	 * without using Installer.app will have the status bar go to landscape once they 
+	 * restart or reboot their phone.
+	 */
+	NSString *path = [NSString stringWithString:@"/System/Library/CoreServices/SpringBoard.app/DefaultApplicationState.plist"];
+	NSMutableDictionary *sb = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+	NSMutableDictionary *me = [sb objectForKey:[NSString stringWithFormat:@"net.fors.iphone.hp%s", MODEL]];
+	if (me == nil) {
+		me = [[NSMutableDictionary alloc] init];
+		[me setObject:[NSNumber numberWithInt:2] forKey:@"SBDefaultStatusBarModeKey"];
+   		[sb setObject:me forKey:[NSString stringWithFormat:@"net.fors.iphone.hp%s", MODEL]];
+		[sb writeToFile:path atomically:YES];
+	}     
+
 	if (init) {
-		/* Set springboard to hide status bar on launch */
-		NSString *path = [NSString stringWithString:@"/System/Library/CoreServices/SpringBoard.app/DefaultApplicationState.plist"];
-		NSMutableDictionary *sb = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-		NSMutableDictionary *me = [sb objectForKey:[NSString stringWithFormat:@"net.fors.iphone.hp%s", MODEL]];
-		if (me == nil) {
-			me = [[NSMutableDictionary alloc] init];
-			[me setObject:[NSNumber numberWithInt:2] forKey:@"SBDefaultStatusBarModeKey"];
-	   		[sb setObject:me forKey:[NSString stringWithFormat:@"net.fors.iphone.hp%s", MODEL]];
-			[sb writeToFile:path atomically:YES];
-		}     
+		/* This switch is used by Installer.app to run the status bar hiding code
+		 * above.  So we do nothing here and exit below so Installer.app can finish.
+		 */
 	} else if (reset) {
 		/* Delete persistent memory */
 		NSString *path = [NSString stringWithFormat:@"/var/root/Library/net.fors.iphone.hpcalc"];
@@ -62,9 +71,7 @@ int main(int argc, char **argv) {
      	if ([[[NSFileManager defaultManager] directoryContentsAtPath:path] count] == 0) {
      		[[NSFileManager defaultManager] removeFileAtPath:path handler:nil];
 		}
-	} else if (gui) {
-		rc = UIApplicationMain(argc, argv, [CalculatorApp class]);
-	} else {
+	} else if (nogui) {
 		HPCalc *calc = [[HPCalc alloc] init];
 
 		while ( ! [calc keyBufferIsEmpty]) {
@@ -91,6 +98,8 @@ int main(int argc, char **argv) {
 		printf("%s\n", [[calc getDisplayString] cStringUsingEncoding:NSASCIIStringEncoding]);
 		
 		[calc shutdown];
+	} else {
+		rc = UIApplicationMain(argc, argv, [CalculatorApp class]);
 	}
 	
 	[pool release];

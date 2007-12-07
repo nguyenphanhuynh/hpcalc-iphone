@@ -51,9 +51,9 @@ for ($i=0; $i<$#ARGV-2; $i++) {
 			# print "$buildModel |$models|\n";
 			if ( (($models eq "all") || ($models =~ /$buildModel/)) && ($rpn ne "") && ($result ne "") ) {
 				if ($debug) {
-					print "ssh $iphone '/Applications/$app.app/$exe \"$rpn\"'\n";
+					print "ssh $iphone '/Applications/$app.app/$exe --nogui \"$rpn\"'\n";
 				}
-				$output = `ssh $iphone '/Applications/$app.app/$exe "$rpn"'`;
+				$output = `ssh $iphone '/Applications/$app.app/$exe --nogui "$rpn"'`;
 				$output =~ s/[\r\n]//g;
 				$output =~ s/^\s*(.*?)\s*$/$1/;
 				if ($debug) {
