@@ -37,6 +37,8 @@ The HP-15C emulator for the iPhone was written and is maintained by Thomas Fors.
 
 = Revision History =
 
+ * *Version 1.0.6* - Fixes a bug that prevented the calculator from launching properly on phones with firmware 1.0.2.
+
  * *Version 1.0.5* - Adds a popup menu with some numeric constants and unit conversion (temperature only for now).  Tap on the HP logo to the right of the calculator display to activate.  If you would like to see a specific constant added or suggest a unit conversion, please enter a [http://code.google.com/p/hpcalc-iphone/issues/list support issue].
 
  * *Version 1.0.4* - Fixes bugs in the keypad and display.  Multi-key presses should now work.  For example, the "ON" & "." sequence for changing the digit separators now works.  Also, the "f", "PREFIX" function now properly displays the mantissa while "PREFIX" is held down.  Also fixes the display of digit separators which was broken in the last version and slightly enlarged the valid "hit" area for keys.
