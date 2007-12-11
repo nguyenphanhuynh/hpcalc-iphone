@@ -29,6 +29,7 @@ int main(int argc, char **argv) {
 	bool init = NO;
 	bool reset = NO;
 	bool nogui = NO;
+	bool ver = NO;
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
@@ -38,8 +39,10 @@ int main(int argc, char **argv) {
 			init = YES;
 		} else if (strncasecmp("--reset", argv[i], 7) == 0) {
 			reset = YES;
-		} else if (strncasecmp("--nogui", argv[i], 16) == 0) {
+		} else if (strncasecmp("--nogui", argv[i], 7) == 0) {
 			nogui = YES;
+		} else if (strncasecmp("--ver", argv[i], 5) == 0) {
+			ver = YES;
 		}
 	}
 
@@ -98,6 +101,8 @@ int main(int argc, char **argv) {
 		printf("%s\n", [[calc getDisplayString] cStringUsingEncoding:NSASCIIStringEncoding]);
 		
 		[calc shutdown];
+	} else if (ver) {
+		printf("%s\n", VER_STR);
 	} else {
 		rc = UIApplicationMain(argc, argv, [CalculatorApp class]);
 	}

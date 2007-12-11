@@ -22,7 +22,7 @@ EXE=hp$(MODEL)
 
 CC = /usr/local/bin/arm-apple-darwin-gcc
 LD = $(CC)
-CFLAGS += -I/Developer/SDKs/iPhone/include
+CFLAGS += -I/Developer/SDKs/iPhone/include -Ibuild
 CFLAGS += -DHP$(UCMODEL)
 CFLAGS += -O3
 LDFLAGS = -isystem $(HEAVENLY) \
@@ -135,15 +135,14 @@ publish: pkg
 	echo "</dict>" >> ../repo/packages.xml
 	echo "</plist>" >> ../repo/packages.xml
 	
-build/Info-$(MODEL).plist: Makefile version.$(EXE) $(BUNDLE)
-	tools/updateSvnRev.pl > svnrev
-	tools/incrBuildNum.pl
+build/Info-$(MODEL).plist: Makefile meta/version.$(EXE) $(BUNDLE)
+	@ tools/updateSvnRev.pl > svnrev
+	@ tools/incrBuildNum.pl
 	tools/genInfoPlist.pl $(APPNAME) $(EXE) > build/Info-$(MODEL).plist
 
 build/$(APPNAME).app: $(BUNDLE) build/Info-$(MODEL).plist
-	mkdir -p build/$(APPNAME).app
+	@mkdir -p build/$(APPNAME).app
 	@list='$?'; for p in $$list; do \
-		echo cp $$p build/$(APPNAME).app/; \
 		cp $$p build/$(APPNAME).app/; \
 	done
 	@if test -e build/$(APPNAME).app/keypad-$(MODEL).png; then \
@@ -167,11 +166,12 @@ build/$(APPNAME).app: $(BUNDLE) build/Info-$(MODEL).plist
 		mv build/$(APPNAME).app/Info-$(MODEL).plist build/$(APPNAME).app/Info.plist; \
 	fi;
 	@touch build/$(APPNAME).app
+	@echo Files copied to build/$(APPNAME).app
 
 build/$(EXE): $(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $^
 
-build/%-$(MODEL).o: src/%.m
+build/%-$(MODEL).o: src/%.m build/version-$(MODEL).h
 	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@
 
 build/%.o: src/%.m
@@ -179,6 +179,9 @@ build/%.o: src/%.m
 
 build/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@
+	  
+build/version-$(MODEL).h: meta/version.$(EXE)
+	cat $< | tools/updateVersion.pl > $@
 	
 .PHONY: checkall
 checkall:

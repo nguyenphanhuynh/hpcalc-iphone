@@ -27,13 +27,13 @@ $id = "net.fors.iphone.$id";
 
 $svnrev = `cat svnrev`;
 $build = `cat buildnum`;
-$ver = `cat version.$exe`; # . "r${svnrev}x${build}";
+$ver = `cat meta/version.$exe`; # . "r${svnrev}x${build}";
 $ver =~ s/[\r\n]//g;
            
 $archive = $name;
 $archive =~ s/\-//g;
 $archive =~ tr/A-Z/a-z/;
-$archive .= "-" . `cat version.$exe`; # . "r${svnrev}x${build}";
+$archive .= "-" . `cat meta/version.$exe`; # . "r${svnrev}x${build}";
 $archive =~ s/[\r\n]//g;
 
 $latest = $archive;
@@ -88,7 +88,7 @@ print FP "    <string>" . $hash . "</string>\n";
 print FP "    <key>url</key>\n";
 print FP "    <string>http://hpcalc-iphone.googlecode.com/svn/repo/${exe}.html</string>\n";
 
-$desc = `cat description.$exe`;
+$desc = `cat meta/description.$exe`;
 $desc =~ s/[\r\n]/ /g;
 $desc =~ s/\$\(\(NAME\)\)/$name/i;
 $desc =~ s/\$\(\(VER\)\)/$ver/i;
