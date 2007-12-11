@@ -34,7 +34,7 @@
 
 #import <Celestial/AVController.h>
 #import <Celestial/AVItem.h>
-
+          
 #include "keymacros.h"
 
 #include <math.h>
@@ -42,18 +42,22 @@
 #ifdef HP15C		
 #define MODEL "15c"
 #define APPNAME "HP-15C"
+#include "version-15c.h"
 #endif
 #ifdef HP12C		
 #define MODEL "12c"
 #define APPNAME "HP-12C"
+#include "version-12c.h"
 #endif
 #ifdef HP11C		
 #define MODEL "11c"
 #define APPNAME "HP-11C"
+#include "version-11c.h"
 #endif
 #ifdef HP16C		
 #define MODEL "16c"
 #define APPNAME "HP-16C"
+#include "version-16c.h"
 #endif
 
 

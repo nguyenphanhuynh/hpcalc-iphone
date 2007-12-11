@@ -28,7 +28,7 @@ $id = "net.fors.iphone.$id";
 
 $svnrev = `cat svnrev`;
 $build = `cat buildnum`;
-$ver = `cat version.$exe`; # . " (r${svnrev}x${build})";
+$ver = `cat meta/version.$exe`; # . " (r${svnrev}x${build})";
 $ver =~ s/[\r\n]//g;
 
 print "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
