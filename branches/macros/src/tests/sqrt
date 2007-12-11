@@ -1,4 +1,0 @@
-<test>
-	<rpn> 3 . 9 SQRT </rpn>
-	<result> 1.974841766 </result>
-</test>	
