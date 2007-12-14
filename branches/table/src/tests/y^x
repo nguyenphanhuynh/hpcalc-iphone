@@ -1,0 +1,20 @@
+<test>
+	<models> 11c 12c 15c </models>
+	<rpn> 2 ENTER 1 . 4 y^x </rpn>
+	<result> 2.639015822 </result>
+</test>
+<test>
+	<models> 11c 12c 15c </models>
+	<rpn> 2 ENTER 1 . 4 CHS y^x </rpn>
+	<result> 0.378929142 </result>
+</test>
+<test>
+	<models> 11c 12c 15c </models>
+	<rpn> 2 CHS ENTER 3 y^x </rpn>
+	<result> -8.000000000 </result>
+</test>
+<test>
+	<models> 11c 12c 15c </models>
+	<rpn> 2 ENTER 3 1/x y^x </rpn>
+	<result> 1.259921050 </result>
+</test>

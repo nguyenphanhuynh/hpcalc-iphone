@@ -1,0 +1,5 @@
+<test>
+	<models> 11c 15c </models>
+	<rpn> PI </rpn>
+	<result> 3.141592654 </result>
+</test>

@@ -1,0 +1,5 @@
+<test>
+	<models> 11c 15c </models>
+	<rpn> 1 2 . 4 5 7 8 log </rpn>
+	<result> 1.095441354 </result>
+</test>

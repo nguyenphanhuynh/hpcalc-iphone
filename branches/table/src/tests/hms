@@ -1,0 +1,10 @@
+<test>
+	<models> 11c 15c </models>
+	<rpn> 1 . 2 3 4 5 TOHMS</rpn>
+	<result> 1.140420000 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> 1 . 2 3 4 5 TOH </rpn>
+	<result> 1.395833333 </result>
+</test>
