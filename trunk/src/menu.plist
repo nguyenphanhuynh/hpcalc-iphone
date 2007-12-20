@@ -153,8 +153,8 @@
 	</dict>
 	<key>ºF to ºC</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 32 - 5 * 9 /</string></dict>
 	<key>ºC to ºF</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 9 * 5 / 32 +</string></dict>
-	<key>K to ºC</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 273.15 +</string></dict>
-	<key>ºC to K</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 273.15 -</string></dict>
+	<key>K to ºC</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 273.15 -</string></dict>
+	<key>ºC to K</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 273.15 +</string></dict>
 	<key>ºR to ºC</key>
 	<dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 491.69 - 5 * 9 /</string></dict>
 	<key>ºC to ºR</key>
