@@ -1,0 +1,75 @@
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 2 5 SIN </rpn>
+	<result> 0.422618262 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 2 5 COS </rpn>
+	<result> 0.906307787 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 2 5 TAN </rpn>
+	<result> 0.466307658 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 0 . 4 2 2 6 1 8 2 6 2 ASIN </rpn>
+	<result> 25.00000002 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 0 . 9 0 6 3 0 7 7 8 7 ACOS </rpn>
+	<result> 25.00000000 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 0 . 4 6 6 3 0 7 6 5 8 ATAN </rpn>
+	<result> 24.99999999 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 1 HYP SIN </rpn>
+	<result> 1.175201194 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 1 HYP COS </rpn>
+	<result> 1.543080635 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 1 HYP TAN </rpn>
+	<result> 0.761594156 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 1 . 1 7 5 2 0 1 1 9 4 HYP-1 SIN </rpn>
+	<result> 1.000000000 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 1 . 5 4 3 0 8 0 6 3 5 HYP-1 COS </rpn>
+	<result> 1.000000000 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 0 . 7 6 1 5 9 4 1 5 6 HYP-1 TAN </rpn>
+	<result> 1.000000000 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 1 HYP-1 SIN-1 </rpn>
+	<result> 90.00000000 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 1 HYP-1 COS-1 </rpn>
+	<result> 0.000000000 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> DEG 1 HYP-1 TAN-1 </rpn>
+	<result> 45.00000000 </result>
+</test>

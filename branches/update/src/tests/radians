@@ -1,0 +1,10 @@
+<test>
+	<models> 11c 15c </models>
+	<rpn> 4 0 . 5 TORAD </rpn>
+	<result> 0.706858347 </result>
+</test>
+<test>
+	<models> 11c 15c </models>
+	<rpn> PI TODEG </rpn>
+	<result> 180.0000000 </result>
+</test>

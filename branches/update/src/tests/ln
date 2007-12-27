@@ -1,0 +1,5 @@
+<test>
+	<models> 11c 12c 15c </models>
+	<rpn> 4 5 ln </rpn>
+	<result> 3.806662490 </result>
+</test>

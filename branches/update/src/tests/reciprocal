@@ -1,0 +1,4 @@
+<test>
+	<rpn> 2 5 1/x </rpn>
+	<result> 0.040000000 </result>
+</test>
