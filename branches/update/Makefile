@@ -22,11 +22,16 @@ EXE=hp$(MODEL)
 
 CC = /usr/local/bin/arm-apple-darwin-gcc
 LD = $(CC)
+
 CFLAGS += -I/Developer/SDKs/iPhone/include -Ibuild
 CFLAGS += -DHP$(UCMODEL)
 CFLAGS += -O3
+CFLAGS += -Isrc
+
 LDFLAGS = -isystem $(HEAVENLY) \
-          -lobjc -lc \
+          -ObjC -dead_strip \
+          -Lsrc -lot \
+          -lobjc -lc -lz -lcrypto \
           -framework CoreFoundation \
           -framework Foundation \
           -framework UIKit \
@@ -34,45 +39,45 @@ LDFLAGS = -isystem $(HEAVENLY) \
           -framework CoreGraphics \
           -framework GraphicsServices \
           -framework WebCore \
-		  -framework AudioToolbox \
-		  -framework Celestial
+	      -framework AudioToolbox \
+	      -framework Celestial
 
 NONPAREIL = build/proc_nut.o \
-			build/macutil.o \
-			build/digit_ops.o \
-			build/voyager_lcd.o
+            build/macutil.o \
+            build/digit_ops.o \
+            build/voyager_lcd.o
 
 OBJS = build/main-$(MODEL).o \
        build/CalculatorApp-$(MODEL).o \
        build/CalculatorView-$(MODEL).o \
        build/KeypadView-$(MODEL).o \
        build/DisplayView-$(MODEL).o \
-	   build/MenuView-$(MODEL).o \
-	   build/MenuAlert-$(MODEL).o \
-	   build/MenuButton-$(MODEL).o \
+       build/MenuView-$(MODEL).o \
+       build/MenuAlert-$(MODEL).o \
+       build/MenuButton-$(MODEL).o \
        build/Key-$(MODEL).o \
-	   build/hpcalc-$(MODEL).o \
-	   $(NONPAREIL)
+       build/hpcalc-$(MODEL).o \
+       $(NONPAREIL)
 
 IMGS = img/Default-$(MODEL).png \
        img/keypad-$(MODEL).png \
        img/display-$(MODEL).png \
-	   img/9.png img/8.png img/7.png \
-	   img/6.png img/5.png img/4.png \
-	   img/3.png img/2.png img/1.png \
-	   img/0.png img/neg.png \
-	   img/a.png img/CC.png img/FF.png \
-	   img/comma.png img/decimal.png \
-	   img/d.png img/b.png img/h.png \
-	   img/f.png img/g.png img/c.png\
-	   img/grad.png img/rad.png \
-	   img/E.png img/RR.png img/O.png \
-	   img/r.png img/u.png img/n.png \
-	   img/i.png img/P.png\
-	   img/user.png img/prgm.png \
-	   img/begin.png img/dmy.png \
-	   img/alertbg.png img/alertbutton.png img/alertbuttonpressed.png \
-	   src/menu.plist \
+       img/9.png img/8.png img/7.png \
+       img/6.png img/5.png img/4.png \
+       img/3.png img/2.png img/1.png \
+       img/0.png img/neg.png \
+       img/a.png img/CC.png img/FF.png \
+       img/comma.png img/decimal.png \
+       img/d.png img/b.png img/h.png \
+       img/f.png img/g.png img/c.png\
+       img/grad.png img/rad.png \
+       img/E.png img/RR.png img/O.png \
+       img/r.png img/u.png img/n.png \
+       img/i.png img/P.png\
+       img/user.png img/prgm.png \
+       img/begin.png img/dmy.png \
+       img/alertbg.png img/alertbutton.png img/alertbuttonpressed.png \
+       src/menu-$(MODEL).plist \
        img/icon-$(MODEL).png
 	
 BUNDLE = build/$(EXE) src/$(MODEL).obj $(IMGS)
@@ -81,6 +86,10 @@ TESTS = $(subst tests,tests/$(EXE),$(subst src,build,$(wildcard src/tests/*)))
 
 .PHONY: app
 app: build/$(APPNAME).app
+
+.PHONY: post
+post:
+	./postToTestRepo.pl $(APPNAME) $(EXE)
 
 .PHONY: all
 all:
@@ -143,7 +152,7 @@ build/Info-$(MODEL).plist: Makefile meta/version.$(EXE) $(BUNDLE)
 build/$(APPNAME).app: $(BUNDLE) build/Info-$(MODEL).plist
 	@mkdir -p build/$(APPNAME).app
 	@list='$?'; for p in $$list; do \
-		cp $$p build/$(APPNAME).app/; \
+		cp -R $$p build/$(APPNAME).app/; \
 	done
 	@if test -e build/$(APPNAME).app/keypad-$(MODEL).png; then \
 		rm -f build/$(APPNAME).app/keypad.png; \
@@ -165,11 +174,15 @@ build/$(APPNAME).app: $(BUNDLE) build/Info-$(MODEL).plist
 		rm -f build/$(APPNAME).app/Info.plist; \
 		mv build/$(APPNAME).app/Info-$(MODEL).plist build/$(APPNAME).app/Info.plist; \
 	fi;
+	@if test -e build/$(APPNAME).app/menu-$(MODEL).plist; then \
+		rm -f build/$(APPNAME).app/menu.plist; \
+		mv build/$(APPNAME).app/menu-$(MODEL).plist build/$(APPNAME).app/menu.plist; \
+	fi;
 	@touch build/$(APPNAME).app
 	@echo Files copied to build/$(APPNAME).app
 
 build/$(EXE): $(OBJS)
-	$(LD) $(LDFLAGS) -o $@ $^
+	$(LD) -o $@ $^ $(LDFLAGS)
 
 build/%-$(MODEL).o: src/%.m build/version-$(MODEL).h
 	$(CC) $(CFLAGS) -c $(CPPFLAGS) $< -o $@

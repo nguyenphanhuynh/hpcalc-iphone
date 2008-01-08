@@ -88,7 +88,9 @@ struct __GSFont				* mbTitleFont = nil;
 }
 
 - (void)mouseDown:(struct __GSEvent *)event {
-	// AudioServicesPlaySystemSound(1105);
+	if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"keyClick"] ) {
+		AudioServicesPlaySystemSound(1105);
+	}
 	[super mouseDown:event];
 }
 
@@ -123,7 +125,7 @@ struct __GSFont				* mbTitleFont = nil;
 				[_textLabel setFont: myFont];
 				size = [_textLabel textSize];
 				fontSize -= 0.1;
-			} while ( (size.width*size.height) > (rect.size.width*rect.size.height)/2 );
+			} while ( (size.width*size.height) > (rect.size.width*rect.size.height)/3.1 );
 			[_textLabel setFont: myFont];
 			// set to white
 			[_textLabel setColor:(struct CGColor *)GSColorForSystemColor(1)];

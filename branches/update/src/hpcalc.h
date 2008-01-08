@@ -36,6 +36,7 @@
 	unsigned long long	_cycles;
 	bool				_displayPaused;
 	NSDictionary		* _keystrokeDictionary;
+	NSMutableDictionary	* _preferences;
 }
 
 - (void) updateDisplay;

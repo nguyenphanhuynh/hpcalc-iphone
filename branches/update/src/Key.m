@@ -30,7 +30,9 @@
 }   
 
 - (void)mouseDown:(struct __GSEvent *)event {
-	// AudioServicesPlaySystemSound(1105);
+	if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"keyClick"] ) {
+		AudioServicesPlaySystemSound(1105);
+	}
 	[_keypad keyPressed:_code];
 	[super mouseDown:event];
 }

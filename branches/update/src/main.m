@@ -19,6 +19,7 @@
 #import <UIKit/UIWindow.h>
 
 #import "CalculatorApp.h"
+#import "OTUpdateManager.h"
 #import "hpcalc.h"
 
 /*
@@ -62,6 +63,19 @@ int main(int argc, char **argv) {
 		[sb writeToFile:path atomically:YES];
 	}     
 
+	/* Create sub-folders under ~/Library/net.fors.iphone.hpcalc and move state file */
+	if ( ! [[NSFileManager defaultManager] fileExistsAtPath:@CFGPATH] ) {
+		[[NSFileManager defaultManager] createDirectoryAtPath:@CFGPATH attributes:nil];
+
+		NSString *path = [NSString stringWithFormat:@"/var/root/Library/net.fors.iphone.hpcalc"];
+		NSString *name = [NSString stringWithFormat:@"%@/%s.state", path, MODEL];
+		NSString *newName = [NSString stringWithFormat:@"%@/%s/state", path, MODEL];
+		if ( [[NSFileManager defaultManager] fileExistsAtPath:name] ) {
+			[[NSFileManager defaultManager] copyPath:name toPath:newName handler:nil];
+    		[[NSFileManager defaultManager] removeFileAtPath:name handler:nil];
+		}
+	}
+
 	if (init) {
 		/* This switch is used by Installer.app to run the status bar hiding code
 		 * above.  So we do nothing here and exit below so Installer.app can finish.
@@ -69,7 +83,7 @@ int main(int argc, char **argv) {
 	} else if (reset) {
 		/* Delete persistent memory */
 		NSString *path = [NSString stringWithFormat:@"/var/root/Library/net.fors.iphone.hpcalc"];
-		NSString *name = [NSString stringWithFormat:@"%@/%s.state", path, MODEL];
+		NSString *name = [NSString stringWithFormat:@"%@/%s/state", path, MODEL];
      	[[NSFileManager defaultManager] removeFileAtPath:name handler:nil];
      	if ([[[NSFileManager defaultManager] directoryContentsAtPath:path] count] == 0) {
      		[[NSFileManager defaultManager] removeFileAtPath:path handler:nil];

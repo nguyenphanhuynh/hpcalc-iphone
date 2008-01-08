@@ -46,6 +46,10 @@
     if ( ! [[NSFileManager defaultManager] fileExistsAtPath:@"/var/root/Library/net.fors.iphone.hpcalc" isDirectory:&isDir]) {
 		NSLog(@"Creating /var/root/Library/net.fors.iphone.hpcalc");
      	[[NSFileManager defaultManager] createDirectoryAtPath:@"/var/root/Library/net.fors.iphone.hpcalc" attributes:nil];
+	    if ( ! [[NSFileManager defaultManager] fileExistsAtPath:@CFGPATH isDirectory:&isDir]) {
+			NSLog(@"Creating %s", CFGPATH);
+	     	[[NSFileManager defaultManager] createDirectoryAtPath:@CFGPATH attributes:nil];
+		}
     }
 
 	if ( ! [self loadState] ) {
@@ -78,7 +82,7 @@
 }
 
 - (void) saveState {
-	NSString *name = [NSString stringWithFormat:@"/var/root/Library/net.fors.iphone.hpcalc/%s.state", MODEL];
+	NSString *name = [NSString stringWithFormat:@"/var/root/Library/net.fors.iphone.hpcalc/%s/state", MODEL];
 	FILE *fp = fopen([name cStringUsingEncoding:NSASCIIStringEncoding], "wb");
 	fwrite(&(nv->a), sizeof(reg_t), 1, fp);
 	fwrite(&(nv->b), sizeof(reg_t), 1, fp);
@@ -124,7 +128,7 @@
 }
 
 - (bool) loadState {
-	NSString *name = [NSString stringWithFormat:@"/var/root/Library/net.fors.iphone.hpcalc/%s.state", MODEL];
+	NSString *name = [NSString stringWithFormat:@"/var/root/Library/net.fors.iphone.hpcalc/%s/state", MODEL];
 	FILE *fp = fopen([name cStringUsingEncoding:NSASCIIStringEncoding], "rb");
 	
 	if (!fp) {
