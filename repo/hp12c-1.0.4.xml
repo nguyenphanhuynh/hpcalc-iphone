@@ -1,0 +1,68 @@
+<dict>
+    <key>bundleIdentifier</key>
+    <string>net.fors.iphone.hp12c</string>
+    <key>name</key>
+    <string>HP-12C</string>
+    <key>version</key>
+    <string>1.0.4</string>
+    <key>location</key>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp12c-1.0.4.zip</string>
+    <key>maintainer</key>
+    <string>Thomas Fors</string>
+    <key>contact</key>
+    <string>tom@fors.net</string>
+    <key>size</key>
+    <string>234591</string>
+    <key>date</key>
+    <string>1199755655</string>
+    <key>hash</key>
+    <string>cdea22ba864eb68375a6945509447a7c</string>
+    <key>url</key>
+    <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp12c.html</string>
+    <key>description</key>
+    <string>HP-12C financial programmable calculator emulator. See More Info for changes. </string>
+    <key>scripts</key>
+    <dict>
+    	<key>install</key>
+    	<array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-12C.app</string>
+    			<string>/Applications/HP-12C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-12C.app/hp12c --init</string>
+    		</array>
+    	</array>
+    	<key>update</key>
+    	<array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-12C.app</string>
+    		</array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-12C.app</string>
+    			<string>/Applications/HP-12C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-12C.app/hp12c --init</string>
+    		</array>
+    	</array>
+    	<key>uninstall</key>
+    	<array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-12C.app/hp12c --reset</string>
+    		</array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-12C.app</string>
+    		</array>
+    	</array>
+    </dict>        
+    <key>category</key>
+    <string>Utilities</string>
+</dict>

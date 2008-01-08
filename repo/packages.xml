@@ -22,19 +22,19 @@
     <key>name</key>
     <string>HP-15C</string>
     <key>version</key>
-    <string>1.0.6</string>
+    <string>1.0.7</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.6.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.7.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>237639</string>
+    <string>274079</string>
     <key>date</key>
-    <string>1197050999</string>
+    <string>1199755657</string>
     <key>hash</key>
-    <string>f8efb2723811bd5aa1fcc1576b6816c5</string>
+    <string>f058cb642647283f0fb891f6a7aaf5b5</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp15c.html</string>
     <key>description</key>
@@ -90,23 +90,23 @@
     <key>name</key>
     <string>HP-12C</string>
     <key>version</key>
-    <string>1.0.3</string>
+    <string>1.0.4</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp12c-1.0.3.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp12c-1.0.4.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>171065</string>
+    <string>234591</string>
     <key>date</key>
-    <string>1196207565</string>
+    <string>1199755655</string>
     <key>hash</key>
-    <string>30fb44d5e3c0d72aac61636a2cb4be1a</string>
+    <string>cdea22ba864eb68375a6945509447a7c</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp12c.html</string>
     <key>description</key>
-    <string>HP-12C financial programmable calculator emulator. v1.0.3 fixes keypad and display issues. </string>
+    <string>HP-12C financial programmable calculator emulator. See More Info for changes. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
@@ -158,19 +158,19 @@
     <key>name</key>
     <string>HP-11C</string>
     <key>version</key>
-    <string>1.0.4</string>
+    <string>1.0.5</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp11c-1.0.4.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp11c-1.0.5.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>211833</string>
+    <string>248223</string>
     <key>date</key>
-    <string>1197051002</string>
+    <string>1199755654</string>
     <key>hash</key>
-    <string>5b699b5cd1d7f7c1bd182ee56ea9849c</string>
+    <string>c28f8dda43b9755be29595480838fe12</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp11c.html</string>
     <key>description</key>
@@ -226,23 +226,23 @@
     <key>name</key>
     <string>HP-16C</string>
     <key>version</key>
-    <string>1.0.2</string>
+    <string>1.0.3</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp16c-1.0.2.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp16c-1.0.3.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>180411</string>
+    <string>244808</string>
     <key>date</key>
-    <string>1196207570</string>
+    <string>1199755659</string>
     <key>hash</key>
-    <string>baf220322d6e0b2e88ab6fcf0f209a75</string>
+    <string>7e22dc44633d3a47023d7757659e0562</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp16c.html</string>
     <key>description</key>
-    <string>HP-16C computer scientist programmable calculator emulator. v1.0.2 fixes keypad and display issues. </string>
+    <string>HP-16C computer scientist programmable calculator emulator. See More Info for changes. </string>
     <key>scripts</key>
     <dict>
     	<key>install</key>
