@@ -6,17 +6,27 @@
 	<dict>
 		<key>menu</key>
 		<array>
-			<!-- <string>Settings</string> -->
+			<string>Preferences</string>
 			<string>Constants</string>
 			<string>Unit Conversion</string>
 		</array>
 	</dict>
-
-	<key>Settings</key>
+	
+	<key>Preferences</key>
 	<dict>
 		<key>menu</key>
-		<array/>
+		<array>
+			<string>Check for updates now</string>
+			<string>Turn auto check for updates %@</string>
+			<string>Turn keyclick %@</string>
+			<string>About</string>
+		</array>
 	</dict>
+	<key>Check for updates now</key><dict><key>function</key><string>Updates</string></dict>
+	<key>Turn auto check for updates %@</key>
+	<dict><key>function</key><string>ToggleAutoUpdate</string></dict>
+	<key>Turn keyclick %@</key><dict><key>function</key><string>ToggleKeyclick</string></dict>
+	<key>About</key><dict><key>function</key><string>About</string></dict>
 
 	<key>Constants</key>
 	<dict>
@@ -136,6 +146,7 @@
 		<key>menu</key>
 		<array>
 			<string>Temperature</string>
+			<string>Length</string>
 		</array>
 	</dict>
 
@@ -159,6 +170,57 @@
 	<dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 491.69 - 5 * 9 /</string></dict>
 	<key>ºC to ºR</key>
 	<dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 9 * 5 / 491.69</string></dict>
-	
+
+	<key>Length</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>To Meter...</string>
+			<string>From Meter...</string>
+		</array>
+	</dict>
+
+	<key>To Meter...</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Centimeter To Meter</string>
+			<string>Foot To Meter</string>
+			<string>Inch To Meter</string>
+			<string>Kilometer To Meter</string>
+			<string>Mile To Meter</string>
+			<string>Nautical Mile To Meter</string>
+			<string>Yard To Meter</string>
+		</array>
+	</dict>
+	<key>Centimeter To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 100 /</string></dict>
+	<key>Foot To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.3048 *</string></dict>
+	<key>Inch To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.0254 *</string></dict>
+	<key>Kilometer To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1000 *</string></dict>
+	<key>Mile To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1609.344 *</string></dict>
+	<key>Nautical Mile To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1852 *</string></dict>
+	<key>Yard To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.9144 *</string></dict>
+
+	<key>From Meter...</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Meter To Centimeter</string>
+			<string>Meter To Foot</string>
+			<string>Meter To Inch</string>
+			<string>Meter To Kilometer</string>
+			<string>Meter To Mile</string>
+			<string>Meter To Nautical Mile</string>
+			<string>Meter To Yard</string>
+		</array>
+	</dict>
+	<key>Meter To Centimeter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 100 *</string></dict>
+	<key>Meter To Foot</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.3048 /</string></dict>
+	<key>Meter To Inch</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.0254 /</string></dict>
+	<key>Meter To Kilometer</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1000 /</string></dict>
+	<key>Meter To Mile</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1609.344 /</string></dict>
+	<key>Meter To Nautical Mile</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1852 /</string></dict>
+	<key>Meter To Yard</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.9144 /</string></dict>
+
 </dict>
 </plist>

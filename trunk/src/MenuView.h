@@ -18,6 +18,7 @@
 
 #import "CalculatorApp.h"
 #import "MenuButton.h"
+#import "OTUpdateManager.h"
 
 @class MenuAlert;
 
@@ -27,6 +28,9 @@
 	NSMutableArray			* _menuStack;
 	NSMutableDictionary		* _menuData;
 	NSMutableArray			* _tagList;
+	UIProgressBar			* _progressBar;
+	UIAlertSheet			* _progressSheet;
+	bool					  _progressSheetVisible;
 }
 
 - (void) setCalcView:(CalculatorView *) v;
@@ -38,6 +42,22 @@
 - (MenuButton *) _buttonWithName:(NSString *) name;
 - (bool) _isMenu:(int) tag;
 - (bool) _isMacro:(int) tag;
+- (bool) _isFunction:(int) tag;
 - (void) _playMacro:(id)tag;
+- (void) _performFunction:(id)tag;
+- (void) checkForUpdateKeepHidden;
+- (void) checkForUpdate;
+- (void) promptForUpdate;
+- (id) getUpdateManager;
+- (id) updatePreferenceButtonName:(id) name;
+- (bool) _startupMessageIsNeeded;
+
+- (void) showProgressSheet;
+- (void) hideProgressSheet;
+- (void) updateManager:(id) pm statusChanged:(id) status;
+- (void) updateManager:(id) pm progressChanged:(id) progress;
+- (void) updateManager:(id) pm startedQueue:(id) q;
+
+
 
 @end
