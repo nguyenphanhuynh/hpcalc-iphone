@@ -33,6 +33,8 @@ The HP-11C emulator for the iPhone was written and is maintained by Thomas Fors.
 
 = Revision History =
 
+ * *Version 1.0.5* - Adds Preferences menu with the ability to customize keyclicks and automatic checking for updates.  Adds length unit conversion.  Fixes a bug in C/K temperature conversion.  Tap on the HP logo to access the new features.
+
  * *Version 1.0.4* - Fixes a bug that prevented the calculator from launching properly on phones with firmware 1.0.2.
 
  * *Version 1.0.3* - Adds a popup menu with some numeric constants and unit conversion (temperature only for now).  Tap on the HP logo to the right of the calculator display to activate.  If you would like to see a specific constant added or suggest a unit conversion, please enter a [http://code.google.com/p/hpcalc-iphone/issues/list support issue].
