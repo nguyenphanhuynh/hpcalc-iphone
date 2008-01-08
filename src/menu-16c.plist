@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Main Menu</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Preferences</string>
+		</array>
+	</dict>
+	
+	<key>Preferences</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Check for updates now</string>
+			<string>Turn auto check for updates %@</string>
+			<string>Turn keyclick %@</string>
+			<string>About</string>
+		</array>
+	</dict>
+	<key>Check for updates now</key><dict><key>function</key><string>Updates</string></dict>
+	<key>Turn auto check for updates %@</key>
+	<dict><key>function</key><string>ToggleAutoUpdate</string></dict>
+	<key>Turn keyclick %@</key><dict><key>function</key><string>ToggleKeyclick</string></dict>
+	<key>About</key><dict><key>function</key><string>About</string></dict>
+
+</dict>
+</plist>

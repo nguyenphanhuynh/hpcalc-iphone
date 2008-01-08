@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Main Menu</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Preferences</string>
+			<string>Constants</string>
+			<string>Unit Conversion</string>
+		</array>
+	</dict>
+	
+	<key>Preferences</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Check for updates now</string>
+			<string>Turn auto check for updates %@</string>
+			<string>Turn keyclick %@</string>
+			<string>About</string>
+		</array>
+	</dict>
+	<key>Check for updates now</key><dict><key>function</key><string>Updates</string></dict>
+	<key>Turn auto check for updates %@</key>
+	<dict><key>function</key><string>ToggleAutoUpdate</string></dict>
+	<key>Turn keyclick %@</key><dict><key>function</key><string>ToggleKeyclick</string></dict>
+	<key>About</key><dict><key>function</key><string>About</string></dict>
+
+	<key>Constants</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Astronomical</string>
+			<string>Atomic</string>
+			<string>Electromagnetic</string>
+			<string>Physiochemical</string>
+			<string>Universal</string>
+		</array>
+	</dict>
+
+	<key>Astronomical</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Equatorial Radius of Earth (km)</string>
+			<string>Mass of Earth (kg)</string>
+			<string>Mass of Moon (kg)</string>
+			<string>Mass of Sun (kg)</string>
+			<string>Mean Earth-Moon Distance (km)</string>
+			<string>Mean Earth-Sun Distance (km)</string>
+			<string>Mean Radius of Earth (km)</string>
+			<string>Mean Radius of Moon (km)</string>
+		</array>
+	</dict>
+	<key>Equatorial Radius of Earth (km)</key><dict><key>macro</key><string>6378</string></dict>
+	<key>Mass of Earth (kg)</key><dict><key>macro</key><string>5.974e24</string></dict>
+	<key>Mass of Moon (kg)</key><dict><key>macro</key><string>7.348e22</string></dict>
+	<key>Mass of Sun (kg)</key><dict><key>macro</key><string>1.989e30</string></dict>
+	<key>Mean Earth-Moon Distance (km)</key><dict><key>macro</key><string>384401</string></dict>
+	<key>Mean Earth-Sun Distance (km)</key><dict><key>macro</key><string>149600000</string></dict>
+	<key>Mean Radius of Earth (km)</key><dict><key>macro</key><string>6371</string></dict>
+	<key>Mean Radius of Moon (km)</key><dict><key>macro</key><string>1738</string></dict>
+
+	<key>Atomic</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Electron Mass (kg)</string>
+			<string>Fine-Structure Constant</string>
+			<string>Inverse Fine-Structure Constant</string>
+			<string>Neutron Mass (kg)</string>
+			<string>Proton Mass (kg)</string>
+			<string>Proton-Electron Mass Ratio</string>
+			<string>Proton-Neutron Mass Ratio</string>
+			<string>Rydberg Constant</string>
+			<string>Thomson Cross Section</string>
+		</array>
+	</dict>
+	<key>Electron Mass (kg)</key><dict><key>macro</key><string>9.1093826e-31</string></dict>
+	<key>Fine-Structure Constant</key><dict><key>macro</key><string>0.0072973526</string></dict>
+	<key>Inverse Fine-Structure Constant</key>
+	<dict><key>macro</key><string>137.03599911</string></dict>
+	<key>Neutron Mass (kg)</key><dict><key>macro</key><string>1.67492728e-27</string></dict>
+	<key>Proton Mass (kg)</key><dict><key>macro</key><string>1.67262171e-27</string></dict>
+	<key>Proton-Electron Mass Ratio</key><dict><key>macro</key><string>1836.15267261</string></dict>
+	<key>Proton-Neutron Mass Ratio</key><dict><key>macro</key><string>0.9986234787</string></dict>
+	<key>Rydberg Constant</key><dict><key>macro</key><string>10973731.568525</string></dict>
+	<key>Thomson Cross Section</key><dict><key>macro</key><string>6.65245873e-29</string></dict>
+
+	<key>Electromagnetic</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Conductance Quantum</string>
+			<string>Elementary Charge</string>
+			<string>Magnetic Flux Quantum</string>
+		</array>
+	</dict>
+	<key>Conductance Quantum</key><dict><key>macro</key><string>7.748091733e-5</string></dict>
+	<key>Elementary Charge</key><dict><key>macro</key><string>1.60217653e-19</string></dict>
+	<key>Magnetic Flux Quantum</key><dict><key>macro</key><string>2.06783372e-15</string></dict>
+
+	<key>Physiochemical</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Atomic Mass Constant</string>
+			<string>Avogadro Constant</string>
+			<string>Boltzmann Constant</string>
+			<string>Faraday Constant</string>
+			<string>Molar Gas Constant</string>
+			<string>Stefan-Boltzmann Constant</string>
+		</array>
+	</dict>
+	<key>Atomic Mass Constant</key><dict><key>macro</key><string>1.66053886e-27</string></dict>
+	<key>Avogadro Constant</key><dict><key>macro</key><string>6.0221415e23</string></dict>
+	<key>Boltzmann Constant</key><dict><key>macro</key><string>1.3806505e-23</string></dict>
+	<key>Faraday Constant</key><dict><key>macro</key><string>96485.3383</string></dict>
+	<key>Molar Gas Constant</key><dict><key>macro</key><string>8.314472</string></dict>
+	<key>Stefan-Boltzmann Constant</key><dict><key>macro</key><string>5.6704e-8</string></dict>
+
+	<key>Universal</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Electric Constant</string>
+			<string>Magnetic Constant</string>
+			<string>Newtonian Constant of Gravitation</string>
+			<string>Standard Gravity Acceleration (m/s)</string>
+			<string>Planck Constant</string>
+			<string>Speed of Light in Vacuum (m/s)</string>
+		</array>
+	</dict>
+	<key>Electric Constant</key><dict><key>macro</key><string>8.854187817e-12</string></dict>
+	<key>Magnetic Constant</key><dict><key>macro</key><string>1.2566370614e-6</string></dict>
+	<key>Newtonian Constant of Gravitation</key>
+	<dict><key>macro</key><string>6.6742e-11</string></dict>
+	<key>Planck Constant</key><dict><key>macro</key><string>6.6260693e-34</string></dict>
+	<key>Speed of Light in Vacuum (m/s)</key><dict><key>macro</key><string>299792458</string></dict>
+	<key>Standard Gravity Acceleration (m/s)</key><dict><key>macro</key><string>9.80665</string></dict>
+
+	<key>Unit Conversion</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Temperature</string>
+			<string>Length</string>
+		</array>
+	</dict>
+
+	<key>Temperature</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>ºF to ºC</string>
+			<string>K to ºC</string>
+			<string>ºR to ºC</string>
+			<string>ºC to ºF</string>
+			<string>ºC to K</string>
+			<string>ºC to ºR</string>
+		</array>
+	</dict>
+	<key>ºF to ºC</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 32 - 5 * 9 /</string></dict>
+	<key>ºC to ºF</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 9 * 5 / 32 +</string></dict>
+	<key>K to ºC</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 273.15 -</string></dict>
+	<key>ºC to K</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 273.15 +</string></dict>
+	<key>ºR to ºC</key>
+	<dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 491.69 - 5 * 9 /</string></dict>
+	<key>ºC to ºR</key>
+	<dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 9 * 5 / 491.69</string></dict>
+
+	<key>Length</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>To Meter...</string>
+			<string>From Meter...</string>
+		</array>
+	</dict>
+
+	<key>To Meter...</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Centimeter To Meter</string>
+			<string>Foot To Meter</string>
+			<string>Inch To Meter</string>
+			<string>Kilometer To Meter</string>
+			<string>Mile To Meter</string>
+			<string>Nautical Mile To Meter</string>
+			<string>Yard To Meter</string>
+		</array>
+	</dict>
+	<key>Centimeter To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 100 /</string></dict>
+	<key>Foot To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.3048 *</string></dict>
+	<key>Inch To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.0254 *</string></dict>
+	<key>Kilometer To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1000 *</string></dict>
+	<key>Mile To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1609.344 *</string></dict>
+	<key>Nautical Mile To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1852 *</string></dict>
+	<key>Yard To Meter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.9144 *</string></dict>
+
+	<key>From Meter...</key>
+	<dict>
+		<key>menu</key>
+		<array>
+			<string>Meter To Centimeter</string>
+			<string>Meter To Foot</string>
+			<string>Meter To Inch</string>
+			<string>Meter To Kilometer</string>
+			<string>Meter To Mile</string>
+			<string>Meter To Nautical Mile</string>
+			<string>Meter To Yard</string>
+		</array>
+	</dict>
+	<key>Meter To Centimeter</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 100 *</string></dict>
+	<key>Meter To Foot</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.3048 /</string></dict>
+	<key>Meter To Inch</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.0254 /</string></dict>
+	<key>Meter To Kilometer</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1000 /</string></dict>
+	<key>Meter To Mile</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1609.344 /</string></dict>
+	<key>Meter To Nautical Mile</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 1852 /</string></dict>
+	<key>Meter To Yard</key><dict><key>macro</key><string>x&lt;&gt;y x&lt;&gt;y 0.9144 /</string></dict>
+
+</dict>
+</plist>

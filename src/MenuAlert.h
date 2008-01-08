@@ -19,8 +19,12 @@
 #import "CalculatorApp.h"
 
 @interface MenuAlert : UIAlertSheet {
+	BOOL		_progress;
 }
 
+- (id)init;
 - (id)initWithFrame:(struct CGRect)frame buttons:(id)buttons title:(NSString *)title delegate:(id)delegate;
+- (id)initYesNoWithFrame:(struct CGRect)frame title:(NSString *)title delegate:(id)delegate;
+- (id)initOkWithFrame:(struct CGRect)frame title:(NSString *)title delegate:(id)delegate;
 
 @end
