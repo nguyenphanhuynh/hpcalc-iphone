@@ -19,6 +19,7 @@
 			<string>Check for updates now</string>
 			<string>Turn auto check for updates %@</string>
 			<string>Turn keyclick %@</string>
+			<string>Send Feedback</string>
 			<string>About</string>
 		</array>
 	</dict>
@@ -26,6 +27,7 @@
 	<key>Turn auto check for updates %@</key>
 	<dict><key>function</key><string>ToggleAutoUpdate</string></dict>
 	<key>Turn keyclick %@</key><dict><key>function</key><string>ToggleKeyclick</string></dict>
+	<key>Send Feedback</key><dict><key>function</key><string>Feedback</string></dict>
 	<key>About</key><dict><key>function</key><string>About</string></dict>
 
 	<key>Constants</key>
