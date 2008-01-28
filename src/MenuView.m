@@ -201,6 +201,9 @@
 												forKey: @"autoUpdates"
 		];
 		[[NSUserDefaults standardUserDefaults] synchronize];
+	} else if ( [fn isEqualToString:@"Send Feedback"] ) {
+		id url = [NSString stringWithFormat:@"mailto:tom@fors.net?subject=%@%%20Calculator%%20Version%%20%@", @APPNAME, @VER_STR];
+		[UIApp openURL:[NSURL URLWithString:url]];
 	} else if ( [fn isEqualToString:@"About"] ) {
 		[UIApp openURL:[NSURL URLWithString:@ABOUTURL]];
 	} else if ( [fn isEqualToString:@"Check for updates now"] ) {
@@ -266,8 +269,8 @@
 	_alert = [[[UIAlertSheet alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] retain];
 	[_alert setAlertSheetStyle:2];
 	[_alert setDelegate:self];
-	[_alert setTitle:@"New Features"];
-	[_alert setBodyText:[NSString stringWithFormat:@"New features have been added.\nTo access them, tap the HP logo in the upper-right corner.", @APPNAME]];
+	[_alert setTitle:@"Beta Version"];
+	[_alert setBodyText:[NSString stringWithFormat:@"This is a beta version of %@.\nTo provide feedback, tap the HP logo and select 'Preferences' then 'Send Feedback'", @APPNAME]];
 	[_alert addButtonWithTitle:@"OK"];
 	[[[_alert buttons] lastObject] setTag:-2];
 	[_alert presentSheetInView:_transView];
@@ -424,7 +427,7 @@
 
 - (bool) _startupMessageIsNeeded {
     id lastShown = [[NSUserDefaults standardUserDefaults] objectForKey:@"startupMessageLastShown"];
-    id messageDate = [NSDate dateWithString:@"2008-01-27 21:57:00 -0600"];
+    id messageDate = [NSDate dateWithString:@"2008-01-27 23:19:00 -0600"];
     id now = [NSDate date];
 
     if (lastShown == nil) {
