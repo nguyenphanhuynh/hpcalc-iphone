@@ -19,6 +19,8 @@
 #import "CalculatorApp.h"
 #import "MenuButton.h"
 
+#import <UIKit/UINavigationItem.h>
+
 @class MenuAlert;
 
 @interface MenuView : UIView {
@@ -27,6 +29,14 @@
 	NSMutableArray			* _menuStack;
 	NSMutableDictionary		* _menuData;
 	NSMutableArray			* _tagList;
+	
+	UITable					* _table[2];
+	int						  _activeTable;
+	UIView					* _tableView;
+	UIView					* _view;
+	UITransitionView		* _transView;
+	UITransitionView		* _innerTransView;
+	UINavigationBar			* _navBar;
 }
 
 - (void) setCalcView:(CalculatorView *) v;
