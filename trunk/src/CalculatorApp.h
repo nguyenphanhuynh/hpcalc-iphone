@@ -28,6 +28,7 @@
 #import <UIKit/UIProgressBar.h>
 #import <UIKit/UIPushButton.h>
 #import <UIKit/UIThreePartButton.h>
+#import <UIKit/UITransitionView.h>
 #import <UIKit/UIView.h>
 #import <UIKit/UIView-Geometry.h>
 #import <UIKit/UIWindow.h>

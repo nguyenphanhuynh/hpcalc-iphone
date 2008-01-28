@@ -45,6 +45,7 @@
 
 - (void) keyPressed: (int) code {
 	if (code == -100) {
+		[_menuView setEnabled:YES];
 		[_menuView processKeypress:0];
 	} else {
 		[calc processKeypress:code];

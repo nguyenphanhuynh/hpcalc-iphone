@@ -53,7 +53,6 @@ OBJS = build/main-$(MODEL).o \
        build/KeypadView-$(MODEL).o \
        build/DisplayView-$(MODEL).o \
        build/MenuView-$(MODEL).o \
-       build/MenuAlert-$(MODEL).o \
        build/MenuButton-$(MODEL).o \
        build/Key-$(MODEL).o \
        build/hpcalc-$(MODEL).o \
