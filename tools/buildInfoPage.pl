@@ -45,6 +45,22 @@ $data =~ s/rel="nofollow"//g;
 $data =~ s/<p><img (src=".*screenshot-[0-9][0-9]c.png") \/>\s+<\/p>/<img $1 width="285" height="224" alt="Loading..."\/>/;
 print "$data\n";
 
+print << '_AD_';
+<h1>Advertisements</h1>
+<span style="padding-top: 5px;">
+<script type="text/javascript"><!--
+google_ad_client = "pub-6926319582967769";
+//hpcalc 300x250, created 1/28/08
+google_ad_slot = "5370118282";
+google_ad_width = 300;
+google_ad_height = 250;
+//--></script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</span>
+_AD_
+
 print <<'_POST_';
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
 </script>
