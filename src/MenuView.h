@@ -20,6 +20,8 @@
 #import "MenuButton.h"
 #import "OTUpdateManager.h"
 
+#import <UIKit/UINavigationItem.h>
+
 @class MenuAlert;
 
 @interface MenuView : UIView {
@@ -31,6 +33,13 @@
 	UIProgressBar			* _progressBar;
 	UIAlertSheet			* _progressSheet;
 	bool					  _progressSheetVisible;
+	UITable					* _table[2];
+	int						  _activeTable;
+	UIView					* _tableView;
+	UIView					* _view;
+	UITransitionView		* _transView;
+	UITransitionView		* _innerTransView;
+	UINavigationBar			* _navBar;
 }
 
 - (void) setCalcView:(CalculatorView *) v;
