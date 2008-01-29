@@ -1,0 +1,89 @@
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>info</key>
+	<dict>
+		<key>name</key>
+		<string>HP Calculators (Beta)</string>
+		<key>maintainer</key>
+		<string>Thomas Fors</string>
+		<key>contact</key>
+		<string>tom@fors.net</string>
+		<key>url</key>
+		<string>http://hpcalc-iphone.googlecode.com/</string>
+		<key>category</key>
+		<string>Community Sources</string>
+	</dict>
+	<key>packages</key>
+	<array>
+<dict>
+    <key>bundleIdentifier</key>
+    <string>net.fors.iphone.hp15c</string>
+    <key>name</key>
+    <string>HP-15C</string>
+    <key>version</key>
+    <string>1.0.8-b2</string>
+    <key>location</key>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.8-b2.zip</string>
+    <key>maintainer</key>
+    <string>Thomas Fors</string>
+    <key>contact</key>
+    <string>tom@fors.net</string>
+    <key>size</key>
+    <string>273086</string>
+    <key>date</key>
+    <string>1201618030</string>
+    <key>hash</key>
+    <string>32529a4102df583bdfe61141293dc304</string>
+    <key>url</key>
+    <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp15c.html</string>
+    <key>description</key>
+    <string>Beta test version of HP-15C. </string>
+    <key>scripts</key>
+    <dict>
+    	<key>install</key>
+    	<array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-15C.app</string>
+    			<string>/Applications/HP-15C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-15C.app/hp15c --init</string>
+    		</array>
+    	</array>
+    	<key>update</key>
+    	<array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-15C.app</string>
+    		</array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-15C.app</string>
+    			<string>/Applications/HP-15C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-15C.app/hp15c --init</string>
+    		</array>
+    	</array>
+    	<key>uninstall</key>
+    	<array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-15C.app/hp15c --reset</string>
+    		</array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-15C.app</string>
+    		</array>
+    	</array>
+    </dict>        
+    <key>category</key>
+    <string>Utilities</string>
+</dict>
+</array>
+</dict>
+</plist>
