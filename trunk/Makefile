@@ -40,6 +40,7 @@ LDFLAGS = -isystem $(HEAVENLY) \
           -framework GraphicsServices \
           -framework WebCore \
 	      -framework AudioToolbox \
+          -framework Message \
 	      -framework Celestial
 
 NONPAREIL = build/proc_nut.o \

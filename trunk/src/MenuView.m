@@ -19,7 +19,13 @@
 #import "CalculatorApp.h"
 #import "CalculatorView.h"
 #import "MenuView.h"
-#import "MenuButton.h"
+#import "MenuButton.h"  
+#import <CoreFoundation/CFBase.h>
+
+@interface NetworkController : NSObject
++ (id) sharedInstance;
+- (bool) isNetworkUp;
+@end
 
 @implementation MenuView
 
@@ -211,18 +217,6 @@
 	}
 }
 
-- (void) checkForUpdateKeepHidden {
-	OTUpdateManager *um = [self getUpdateManager];
-	if ( [um refreshIsNeeded] ) {
-		[um checkForUpdates];
-		bool updateAvailable = [um updateIsAvailable];
-		[self hideProgressSheet];
-		if ( updateAvailable ) {
-			[self performSelectorOnMainThread:@selector(promptForUpdate) withObject:nil waitUntilDone:NO];
-		}
-	}
-}
-
 - (void) promptForUpdate {
 	if ( _alert ) {
 		[_alert dismiss];
@@ -276,18 +270,57 @@
 	[_alert presentSheetInView:_transView];
 }
 
-- (void) checkForUpdate {
-	[self showProgressSheet];
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate date]];
-	OTUpdateManager *um = [self getUpdateManager];
+- (bool) networkIsUp {
+	return [[NetworkController sharedInstance] isNetworkUp];
+}         
 
-	[um checkForUpdates];
-	bool updateAvailable = [um updateIsAvailable];
+- (void) promptForNoNetwork {
+	if ( _alert ) {
+		[_alert dismiss];
+		[_alert release];
+		_alert = nil;
+	}
 	[self hideProgressSheet];
-	if ( updateAvailable ) {
-		[self performSelectorOnMainThread:@selector(promptForUpdate) withObject:nil waitUntilDone:NO];
+	_alert = [[[UIAlertSheet alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] retain];
+	[_alert setAlertSheetStyle:2];
+	[_alert setDelegate:self];
+	[_alert setTitle:@"Network Error"];
+	[_alert setBodyText:[NSString stringWithFormat:@"Unable to connect to network server.\n\nPlease try again later."]];
+	[_alert addButtonWithTitle:@"OK"];
+	[[[_alert buttons] lastObject] setTag:-2];
+	[_alert presentSheetInView:_transView];
+}
+
+- (void) checkForUpdateKeepHidden {
+	if ([self networkIsUp]) {
+		OTUpdateManager *um = [self getUpdateManager];
+		if ( [um refreshIsNeeded] ) {
+			[um checkForUpdates];
+			bool updateAvailable = [um updateIsAvailable];
+			[self hideProgressSheet];
+			if ( updateAvailable ) {
+				[self performSelectorOnMainThread:@selector(promptForUpdate) withObject:nil waitUntilDone:NO];
+			}
+		}
+	}
+}
+
+- (void) checkForUpdate {
+	if ([self networkIsUp]) {
+		[self showProgressSheet];
+	    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate date]];
+		OTUpdateManager *um = [self getUpdateManager];
+
+		[um checkForUpdates];
+		bool updateAvailable = [um updateIsAvailable];
+		[self hideProgressSheet];
+		if ( updateAvailable ) {
+			[self performSelectorOnMainThread:@selector(promptForUpdate) withObject:nil waitUntilDone:NO];
+		} else {
+			[self performSelectorOnMainThread:@selector(promptNoUpdate) withObject:nil waitUntilDone:NO];
+		}
 	} else {
-		[self performSelectorOnMainThread:@selector(promptNoUpdate) withObject:nil waitUntilDone:NO];
+		[self promptForNoNetwork];
 	}
 }
 
