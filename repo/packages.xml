@@ -22,19 +22,19 @@
     <key>name</key>
     <string>HP-15C</string>
     <key>version</key>
-    <string>1.0.8</string>
+    <string>1.0.9</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.8.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp15c-1.0.9.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>273377</string>
+    <string>273374</string>
     <key>date</key>
-    <string>1202305644</string>
+    <string>1202327033</string>
     <key>hash</key>
-    <string>f300d035b075fba47d3b10633046d03e</string>
+    <string>87c552fab8fb4312759a35142c23300c</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp15c.html</string>
     <key>description</key>
@@ -90,19 +90,19 @@
     <key>name</key>
     <string>HP-12C</string>
     <key>version</key>
-    <string>1.0.5</string>
+    <string>1.0.6</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp12c-1.0.5.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp12c-1.0.6.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>233738</string>
+    <string>233742</string>
     <key>date</key>
-    <string>1202305665</string>
+    <string>1202327038</string>
     <key>hash</key>
-    <string>42f0a01198325b9984003f3da72ac600</string>
+    <string>7052c2577a03a63ab306c4234a4b0402</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp12c.html</string>
     <key>description</key>
@@ -158,19 +158,19 @@
     <key>name</key>
     <string>HP-11C</string>
     <key>version</key>
-    <string>1.0.6</string>
+    <string>1.0.7</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp11c-1.0.6.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp11c-1.0.7.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>247526</string>
+    <string>247524</string>
     <key>date</key>
-    <string>1202305663</string>
+    <string>1202327036</string>
     <key>hash</key>
-    <string>8e622aef8b131dbc3913ae1c627356e7</string>
+    <string>69ea13f2da71031607876e7453f5e021</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp11c.html</string>
     <key>description</key>
@@ -226,19 +226,19 @@
     <key>name</key>
     <string>HP-16C</string>
     <key>version</key>
-    <string>1.0.4</string>
+    <string>1.0.5</string>
     <key>location</key>
-    <string>http://hpcalc-iphone.googlecode.com/files/hp16c-1.0.4.zip</string>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp16c-1.0.5.zip</string>
     <key>maintainer</key>
     <string>Thomas Fors</string>
     <key>contact</key>
     <string>tom@fors.net</string>
     <key>size</key>
-    <string>244088</string>
+    <string>244087</string>
     <key>date</key>
-    <string>1202305667</string>
+    <string>1202327039</string>
     <key>hash</key>
-    <string>c7fc028d66d1ae0da4a09db8d55cb0a1</string>
+    <string>898db9ac2977288f1ac0d534cb6cb810</string>
     <key>url</key>
     <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp16c.html</string>
     <key>description</key>
