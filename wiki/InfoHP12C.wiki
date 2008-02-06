@@ -34,6 +34,8 @@ The HP-12C emulator for the iPhone was written and is maintained by Thomas Fors.
 
 = Revision History =
 
+ * *Version 1.0.6* - Fixed bug that caused splash screen to appear on every launch.
+
  * *Version 1.0.5* - Updated to work with firmware 1.1.3.  Updated pop-up menu accessed by clicking the HP logo.
 
  * *Version 1.0.4* - Adds Preferences menu with the ability to customize keyclicks and automatic checking for updates.  Tap on the HP logo to the right of the display to access the new features.
