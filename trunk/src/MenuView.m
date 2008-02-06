@@ -263,8 +263,8 @@
 	_alert = [[[UIAlertSheet alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] retain];
 	[_alert setAlertSheetStyle:2];
 	[_alert setDelegate:self];
-	[_alert setTitle:@"Beta Version"];
-	[_alert setBodyText:[NSString stringWithFormat:@"This is a beta version of %@.\nTo provide feedback, tap the HP logo and select 'Preferences' then 'Send Feedback'", @APPNAME]];
+	[_alert setTitle:@"Updates"];
+	[_alert setBodyText:[NSString stringWithFormat:@"Updates in this version of the %@ are primarily to support 1.1.3 jailbroke iPhones and iPods.\nTo provide feedback, tap the HP logo and select 'Preferences' then 'Send Feedback'", @APPNAME]];
 	[_alert addButtonWithTitle:@"OK"];
 	[[[_alert buttons] lastObject] setTag:-2];
 	[_alert presentSheetInView:_transView];
@@ -460,7 +460,7 @@
 
 - (bool) _startupMessageIsNeeded {
     id lastShown = [[NSUserDefaults standardUserDefaults] objectForKey:@"startupMessageLastShown"];
-    id messageDate = [NSDate dateWithString:@"2008-01-27 23:19:00 -0600"];
+    id messageDate = [NSDate dateWithString:@"2008-02-08 07:40:00 -0600"];
     id now = [NSDate date];
 
     if (lastShown == nil) {
