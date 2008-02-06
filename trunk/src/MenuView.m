@@ -234,7 +234,7 @@
 	[[[_alert buttons] lastObject] setTag:-2];
 	[_alert setNumberOfRows:1];
 	
-	[_alert presentSheetInView:self];
+	[_alert presentSheetInView:_transView];
 }
 
 - (void) promptNoUpdate {
@@ -342,7 +342,7 @@
 }
 
 - (id) getUpdateManager {
-	OTUpdateManager *um = [[OTUpdateManager alloc] initWithPrefFolder: @CFGPATH
+	OTUpdateManager *um = [[OTUpdateManager alloc] initWithPrefFolder: [@CFGPATH stringByExpandingTildeInPath]
 	                                                    trustedSource: [NSDictionary dictionaryWithObjectsAndKeys:
 							      							  				@"HP Calculators for iPhone",			  @"name",
                                                                             @"http://hpcalc-iphone.googlecode.com/svn/repo/packages.xml",	@"location",
