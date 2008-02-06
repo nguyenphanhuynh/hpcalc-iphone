@@ -64,10 +64,10 @@ int main(int argc, char **argv) {
 	}     
 
 	/* Create sub-folders under ~/Library/net.fors.iphone.hpcalc and move state file */
-	if ( ! [[NSFileManager defaultManager] fileExistsAtPath:@CFGPATH] ) {
-		[[NSFileManager defaultManager] createDirectoryAtPath:@CFGPATH attributes:nil];
+	if ( ! [[NSFileManager defaultManager] fileExistsAtPath:[@CFGPATH stringByExpandingTildeInPath]] ) {
+		[[NSFileManager defaultManager] createDirectoryAtPath:[@CFGPATH stringByExpandingTildeInPath] attributes:nil];
 
-		NSString *path = [NSString stringWithFormat:@"/var/root/Library/net.fors.iphone.hpcalc"];
+		NSString *path = [NSString stringWithFormat:[@"~/Library/net.fors.iphone.hpcalc" stringByExpandingTildeInPath]];
 		NSString *name = [NSString stringWithFormat:@"%@/%s.state", path, MODEL];
 		NSString *newName = [NSString stringWithFormat:@"%@/%s/state", path, MODEL];
 		if ( [[NSFileManager defaultManager] fileExistsAtPath:name] ) {
@@ -82,7 +82,7 @@ int main(int argc, char **argv) {
 		 */
 	} else if (reset) {
 		/* Delete persistent memory */
-		NSString *path = [NSString stringWithFormat:@"/var/root/Library/net.fors.iphone.hpcalc"];
+		NSString *path = [NSString stringWithFormat:[@"~/Library/net.fors.iphone.hpcalc" stringByExpandingTildeInPath]];
 		NSString *name = [NSString stringWithFormat:@"%@/%s/state", path, MODEL];
      	[[NSFileManager defaultManager] removeFileAtPath:name handler:nil];
      	if ([[[NSFileManager defaultManager] directoryContentsAtPath:path] count] == 0) {

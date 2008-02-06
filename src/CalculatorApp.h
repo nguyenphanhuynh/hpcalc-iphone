@@ -45,28 +45,28 @@
 #ifdef HP15C		
 #define MODEL "15c"
 #define APPNAME "HP-15C"
-#define CFGPATH "/var/root/Library/net.fors.iphone.hpcalc/15c"
+#define CFGPATH "~/Library/net.fors.iphone.hpcalc/15c"
 #define ABOUTURL "http://hpcalc-iphone.googlecode.com/svn/repo/hp15c.html"
 #include "version-15c.h"
 #endif
 #ifdef HP12C		
 #define MODEL "12c"
 #define APPNAME "HP-12C"
-#define CFGPATH "/var/root/Library/net.fors.iphone.hpcalc/12c"
+#define CFGPATH "~/Library/net.fors.iphone.hpcalc/12c"
 #define ABOUTURL "http://hpcalc-iphone.googlecode.com/svn/repo/hp12c.html"
 #include "version-12c.h"
 #endif
 #ifdef HP11C		
 #define MODEL "11c"
 #define APPNAME "HP-11C"
-#define CFGPATH "/var/root/Library/net.fors.iphone.hpcalc/11c"
+#define CFGPATH "~/Library/net.fors.iphone.hpcalc/11c"
 #define ABOUTURL "http://hpcalc-iphone.googlecode.com/svn/repo/hp11c.html"
 #include "version-11c.h"
 #endif
 #ifdef HP16C		
 #define MODEL "16c"
 #define APPNAME "HP-16C"
-#define CFGPATH "/var/root/Library/net.fors.iphone.hpcalc/16c"
+#define CFGPATH "~/Library/net.fors.iphone.hpcalc/16c"
 #define ABOUTURL "http://hpcalc-iphone.googlecode.com/svn/repo/hp16c.html"
 #include "version-16c.h"
 #endif
