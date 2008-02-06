@@ -1,0 +1,68 @@
+<dict>
+    <key>bundleIdentifier</key>
+    <string>net.fors.iphone.hp11c</string>
+    <key>name</key>
+    <string>HP-11C</string>
+    <key>version</key>
+    <string>1.0.6</string>
+    <key>location</key>
+    <string>http://hpcalc-iphone.googlecode.com/files/hp11c-1.0.6.zip</string>
+    <key>maintainer</key>
+    <string>Thomas Fors</string>
+    <key>contact</key>
+    <string>tom@fors.net</string>
+    <key>size</key>
+    <string>247526</string>
+    <key>date</key>
+    <string>1202305663</string>
+    <key>hash</key>
+    <string>8e622aef8b131dbc3913ae1c627356e7</string>
+    <key>url</key>
+    <string>http://hpcalc-iphone.googlecode.com/svn/repo/hp11c.html</string>
+    <key>description</key>
+    <string>HP-11C scientific programmable calculator emulator. See More Info for changes. </string>
+    <key>scripts</key>
+    <dict>
+    	<key>install</key>
+    	<array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-11C.app</string>
+    			<string>/Applications/HP-11C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-11C.app/hp11c --init</string>
+    		</array>
+    	</array>
+    	<key>update</key>
+    	<array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-11C.app</string>
+    		</array>
+    		<array>
+    			<string>CopyPath</string>
+    			<string>HP-11C.app</string>
+    			<string>/Applications/HP-11C.app</string>
+    		</array>
+    		<array>
+    			<string>Exec</string>
+    			<string>/Applications/HP-11C.app/hp11c --init</string>
+    		</array>
+    	</array>
+    	<key>uninstall</key>
+    	<array>
+    		<array>
+    			<string>ExecNoError</string>
+    			<string>/Applications/HP-11C.app/hp11c --reset</string>
+    		</array>
+    		<array>
+    			<string>RemovePath</string>
+    			<string>/Applications/HP-11C.app</string>
+    		</array>
+    	</array>
+    </dict>        
+    <key>category</key>
+    <string>Utilities</string>
+</dict>
