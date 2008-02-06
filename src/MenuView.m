@@ -460,7 +460,7 @@
 
 - (bool) _startupMessageIsNeeded {
     id lastShown = [[NSUserDefaults standardUserDefaults] objectForKey:@"startupMessageLastShown"];
-    id messageDate = [NSDate dateWithString:@"2008-02-08 07:40:00 -0600"];
+    id messageDate = [NSDate dateWithString:@"2008-02-06 07:40:00 -0600"];
     id now = [NSDate date];
 
     if (lastShown == nil) {
