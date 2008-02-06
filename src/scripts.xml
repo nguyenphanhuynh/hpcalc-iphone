@@ -31,7 +31,7 @@
 	<key>uninstall</key>
 	<array>
 		<array>
-			<string>Exec</string>
+			<string>ExecNoError</string>
 			<string>/Applications/$((NAME)).app/$((EXE)) --reset</string>
 		</array>
 		<array>
