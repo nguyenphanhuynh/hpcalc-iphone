@@ -75,7 +75,12 @@ int main(int argc, char **argv) {
     		[[NSFileManager defaultManager] removeFileAtPath:name handler:nil];
 		}
 	}
-
+	
+	/* Set permissions of hpcalc folder to allow user mobile to save state, etc. */
+	[[NSFileManager defaultManager] changeFileAttributes: [NSDictionary dictionaryWithObject:[NSNumber numberWithLong:509] forKey:@"NSFilePosixPermissions"]
+	                                              atPath: [@CFGPATH stringByExpandingTildeInPath] 
+	];
+	
 	if (init) {
 		/* This switch is used by Installer.app to run the status bar hiding code
 		 * above.  So we do nothing here and exit below so Installer.app can finish.
